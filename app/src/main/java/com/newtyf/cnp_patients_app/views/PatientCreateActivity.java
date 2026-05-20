@@ -18,7 +18,7 @@ import com.newtyf.cnp_patients_app.models.Patient;
 public class PatientCreateActivity extends AppCompatActivity {
 
     EditText txtNombrePac, txtDniPac, txtEmailPac, txtTelefonoPac, txtFechaNacPac, txtObjetivoPac;
-    int editIndex = -1;
+    Patient patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +38,14 @@ public class PatientCreateActivity extends AppCompatActivity {
         txtFechaNacPac = findViewById(R.id.txtFechaNacPac);
         txtObjetivoPac = findViewById(R.id.txtObjetivoPac);
 
-        editIndex = getIntent().getIntExtra("index", -1);
-        if (editIndex >= 0) {
-            Patient p = MainActivity.pacientes.get(editIndex);
-            txtNombrePac.setText(p.getName());
-            txtDniPac.setText(p.getDni());
-            txtEmailPac.setText(p.getEmail());
-            txtTelefonoPac.setText(p.getPhone());
-            txtFechaNacPac.setText(p.getBirthDate());
-            txtObjetivoPac.setText(p.getObjective());
+        patient = Patient.getByDni(MainActivity.pacientes, getIntent().getStringExtra("dni"));
+        if (patient != null) {
+            txtNombrePac.setText(patient.getName());
+            txtDniPac.setText(patient.getDni());
+            txtEmailPac.setText(patient.getEmail());
+            txtTelefonoPac.setText(patient.getPhone());
+            txtFechaNacPac.setText(patient.getBirthDate());
+            txtObjetivoPac.setText(patient.getObjective());
         }
     }
 
@@ -65,8 +64,8 @@ public class PatientCreateActivity extends AppCompatActivity {
 
         Patient p = new Patient(nombre, dni, email, telefono, fechaNac, objetivo);
 
-        if (editIndex >= 0) {
-            MainActivity.pacientes.set(editIndex, p);
+        if (patient != null) {
+            MainActivity.pacientes.set(MainActivity.pacientes.indexOf(patient), p);
             Toast.makeText(this, "Paciente actualizado", Toast.LENGTH_SHORT).show();
         } else {
             MainActivity.pacientes.add(p);

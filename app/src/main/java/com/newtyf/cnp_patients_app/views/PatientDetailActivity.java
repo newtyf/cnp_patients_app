@@ -1,8 +1,11 @@
 package com.newtyf.cnp_patients_app.views;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,8 @@ import com.newtyf.cnp_patients_app.models.Patient;
 public class PatientDetailActivity extends AppCompatActivity {
 
     TextView tvDetNombre, tvDetDni, tvDetEmail, tvDetTelefono, tvDetFechaNac, tvDetObjetivo;
+
+    Patient patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +41,41 @@ public class PatientDetailActivity extends AppCompatActivity {
         tvDetFechaNac = findViewById(R.id.tvDetFechaNac);
         tvDetObjetivo = findViewById(R.id.tvDetObjetivo);
 
-        int index = getIntent().getIntExtra("index", -1);
-        if (index >= 0 && index < MainActivity.pacientes.size()) {
-            Patient p = MainActivity.pacientes.get(index);
-            tvDetNombre.setText("Nombre: " + p.getName());
-            tvDetDni.setText("DNI: " + p.getDni());
-            tvDetEmail.setText("Email: " + p.getEmail());
-            tvDetTelefono.setText("Teléfono: " + p.getPhone());
-            tvDetFechaNac.setText("Fecha de nacimiento: " + p.getBirthDate());
-            tvDetObjetivo.setText("Objetivo: " + p.getObjective());
+        loadPatient();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadPatient();
+    }
+
+    private void loadPatient() {
+        patient = Patient.getByDni(MainActivity.pacientes, getIntent().getStringExtra("dni"));
+        if (patient != null) {
+            tvDetNombre.setText("Nombre: " + patient.getName());
+            tvDetDni.setText("DNI: " + patient.getDni());
+            tvDetEmail.setText("Email: " + patient.getEmail());
+            tvDetTelefono.setText("Teléfono: " + patient.getPhone());
+            tvDetFechaNac.setText("Fecha de nacimiento: " + patient.getBirthDate());
+            tvDetObjetivo.setText("Objetivo: " + patient.getObjective());
         }
     }
 
     public void GoBack(View view) {
+        finish();
+    }
+
+    public void Edit(View view) {
+        Intent intent = new Intent(this, PatientCreateActivity.class);
+        intent.putExtra("dni", patient.getDni());
+        startActivity(intent);
+    }
+
+    public void Delete(View view) {
+        Log.i("LOG", patient.getName());
+        MainActivity.pacientes.remove(patient);
+        Toast.makeText(this, "Paciente eliminado", Toast.LENGTH_SHORT).show();
         finish();
     }
 }

@@ -76,14 +76,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:onClick="Edit"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvDetObjetivo"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnDelete" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        android:onClick="Delete"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvDetObjetivo"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
+        app:layout_constraintStart_toEndOf="@id/btnEdit"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <Button
         android:id="@+id/btnBack"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Volver"
         android:onClick="GoBack"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/tvDetObjetivo"
+        app:layout_constraintTop_toBottomOf="@id/btnDelete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
