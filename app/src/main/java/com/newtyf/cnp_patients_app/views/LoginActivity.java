@@ -33,8 +33,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void GoToPatientList(View view) {
-        Intent intent = new Intent(this, PatientListActivity.class);
+        // 2. Del Login pasamos al DASHBOARD
+        Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
+        finish(); // Opcional: Cierra el login para que al presionar "Atrás" la app se cierre en lugar de volver al login
     }
 
     public void GoToRegister(View view) {
