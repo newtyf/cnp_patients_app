@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".NutritionistApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,20 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cnp_patients_app">
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        <activity android:name=".presentation.auth.login.LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".views.LoginActivity" />
-        <activity android:name=".views.RegisterActivity" />
-        <activity android:name=".views.PatientListActivity" />
-        <activity android:name=".views.PatientCreateActivity" />
-        <activity android:name=".views.PatientDetailActivity" />
+        <activity
+            android:name=".presentation.main.MainActivity">
+        </activity>
+
+        <activity android:name=".presentation.auth.register.RegisterActivity" />
 
     </application>
 

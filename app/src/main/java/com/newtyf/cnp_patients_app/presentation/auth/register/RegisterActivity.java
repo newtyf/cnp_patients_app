@@ -1,4 +1,4 @@
-package com.newtyf.cnp_patients_app.views;
+package com.newtyf.cnp_patients_app.presentation.auth.register;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,33 +12,37 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.newtyf.cnp_patients_app.R;
+import com.newtyf.cnp_patients_app.presentation.main.MainActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
-    EditText txtEmail, txtPassword;
+    EditText txtNombre, txtDni, txtEmailReg, txtTelefono, txtEspecialidad, txtPasswordReg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        txtEmail = findViewById(R.id.txtEmail);
-        txtPassword = findViewById(R.id.txtPassword);
+        txtNombre = findViewById(R.id.txtNombre);
+        txtDni = findViewById(R.id.txtDni);
+        txtEmailReg = findViewById(R.id.txtEmailReg);
+        txtTelefono = findViewById(R.id.txtTelefono);
+        txtEspecialidad = findViewById(R.id.txtEspecialidad);
+        txtPasswordReg = findViewById(R.id.txtPasswordReg);
     }
 
-    public void GoToPatientList(View view) {
-        Intent intent = new Intent(this, PatientListActivity.class);
+    public void Register(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void GoToRegister(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
+    public void GoBack(View view) {
+        finish();
     }
 }

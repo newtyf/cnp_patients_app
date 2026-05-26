@@ -51,5 +51,19 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
 
-    <style name="Theme.Cnp_patients_app" parent="Base.Theme.Cnp_patients_app" />
+    <style name="Theme.Cnp_patients_app" parent="Base.Theme.Cnp_patients_app">
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNav</item>
+    </style>
+
+    <style name="Widget.App.BottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/Overlay.App.BottomNav</item>
+    </style>
+
+    <style name="Overlay.App.BottomNav" parent="">
+        <item name="colorSurfaceContainer">@color/md_theme_primary</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_background</item>
+        <item name="colorOnSurface">@color/md_theme_background</item>
+        <item name="colorSecondaryContainer">@color/md_theme_primaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_onPrimaryContainer</item>
+    </style>
 </resources>

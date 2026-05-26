@@ -1,12 +1,9 @@
-package com.newtyf.cnp_patients_app.models;
+package com.newtyf.cnp_patients_app.data.model;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class Patient {
     private String name;
