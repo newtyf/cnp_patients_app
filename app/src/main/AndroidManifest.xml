@@ -12,20 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cnp_patients_app">
-
-        <activity android:name=".presentation.auth.login.LoginActivity" android:exported="true">
+        <activity
+            android:name=".presentation.splash.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".presentation.main.MainActivity">
-        </activity>
-
+        <activity android:name=".presentation.auth.login.LoginActivity"/>
+        <activity android:name=".presentation.main.MainActivity" />
         <activity android:name=".presentation.auth.register.RegisterActivity" />
-
     </application>
 
 </manifest>
