@@ -53,6 +53,8 @@
 
     <style name="Theme.Cnp_patients_app" parent="Base.Theme.Cnp_patients_app">
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNav</item>
+        <item name="materialButtonStyle">@style/MyButtonStyle</item>
+        <item name="materialButtonTonalStyle">@style/MyButtonTonalStyle</item>
     </style>
 
     <style name="Widget.App.BottomNav" parent="Widget.Material3.BottomNavigationView">
@@ -65,5 +67,14 @@
         <item name="colorOnSurface">@color/md_theme_background</item>
         <item name="colorSecondaryContainer">@color/md_theme_primaryContainer</item>
         <item name="colorOnSecondaryContainer">@color/md_theme_onPrimaryContainer</item>
+    </style>
+
+    <style name="MyButtonStyle" parent="Widget.Material3.Button">
+        <item name="cornerRadius">8dp</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="MyButtonTonalStyle" parent="Widget.Material3.Button.TonalButton">
+        <item name="cornerRadius">8dp</item>
     </style>
 </resources>

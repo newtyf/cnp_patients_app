@@ -11,13 +11,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.newtyf.cnp_patients_app.R;
 import com.newtyf.cnp_patients_app.presentation.main.MainActivity;
 import com.newtyf.cnp_patients_app.presentation.auth.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText txtEmail, txtPassword;
+    TextInputLayout tfEmail, tfPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        txtEmail = findViewById(R.id.txtEmail);
-        txtPassword = findViewById(R.id.txtPassword);
+        tfEmail = findViewById(R.id.tfEmail);
+        tfPassword = findViewById(R.id.tfPassword);
     }
 
     public void GoToPatientList(View view) {

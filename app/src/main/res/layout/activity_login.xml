@@ -5,88 +5,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:paddingHorizontal="24dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="0dp"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CNP - Inicio de Sesión"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="Registrarme"
+            style="@style/MyButtonTonalStyle"
+            android:layout_gravity="end"
+            android:layout_marginBottom="24dp"
+            android:onClick="GoToRegister" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/cnp_logo_black"
+            android:contentDescription="Logo de la aplicacion"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/tvEmailLabel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Correo electrónico"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            android:layout_marginTop="36dp"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            style="?attr/textAppearanceLabelLargeEmphasized"/>
 
-        <EditText
-            android:id="@+id/txtEmail"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfEmail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="nutricionista@ejemplo.com"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/tvEmailLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp"
+            android:hint="Correo electrónico"
+            app:startIconDrawable="@drawable/ic_email"
+            app:hintEnabled="false">
+            
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="nutricionista@ejemplo.com"/>
+            
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tvPasswordLabel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contraseña"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/txtEmail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            style="?attr/textAppearanceLabelLargeEmphasized"/>
 
-        <EditText
-            android:id="@+id/txtPassword"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfPassword"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="********"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/tvPasswordLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp"
+            android:hint="Contraseña"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="********"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:onClick="GoToPatientList"
-            android:text="Iniciar Sesión"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtPassword" />
+            android:text="Iniciar Sesión"/>
 
-        <TextView
-            android:id="@+id/tvRegister"
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/btnForgetPasword"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿No tienes cuenta? Regístrate aquí"
-            android:onClick="GoToRegister"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/btnLogin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="¿Olvidaste tu Contraseña?"
+            style="?attr/borderlessButtonStyle"
+            android:layout_gravity="end"
+            android:layout_marginVertical="4dp"
+            android:onClick="GoToRegister" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?attr/materialCardViewFilledStyle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="El inicio de sesión inicial requiere una conexión a internet activa para sincronizar su perfil clínico."
+                    android:gravity="top"
+                    android:drawablePadding="8dp"
+                    app:drawableStartCompat="@drawable/ic_info" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 
 </ScrollView>
