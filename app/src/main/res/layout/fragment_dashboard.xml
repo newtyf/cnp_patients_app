@@ -12,33 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="24dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="24dp"
-            android:paddingTop="32dp">
-
-            <ImageView
-                android:id="@+id/ivMenu"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@android:drawable/ic_menu_sort_by_size"
-                android:layout_alignParentStart="true"
-                android:contentDescription="Menú Lateral"
-                app:tint="#3E6837" />
-
-            <ImageView
-                android:id="@+id/ivNotif"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@android:drawable/ic_popup_reminder"
-                android:layout_alignParentEnd="true"
-                android:contentDescription="Notificaciones"
-                app:tint="#3E6837" />
-
-        </RelativeLayout>
+        android:layout_marginTop="8dp"
+        android:paddingBottom="32dp">
 
         <TextView
             android:id="@+id/tvSaludo"
