@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_primary"> <ImageView
+    android:id="@+id/img_cnp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/cnp"
+    android:alpha="0"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_hoja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hoja"
+        android:scaleX="0"
+        android:scaleY="0"
+        app:layout_constraintBottom_toTopOf="@+id/img_cnp"
+        app:layout_constraintEnd_toEndOf="@+id/img_cnp"
+        app:layout_constraintStart_toStartOf="@+id/img_cnp"
+        app:layout_constraintHorizontal_bias="0.4"
+        android:layout_marginBottom="-10dp" /> <ImageView
+        android:id="@+id/img_tenedor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tenedor"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_cnp"
+        app:layout_constraintEnd_toStartOf="@+id/img_cnp"
+        app:layout_constraintTop_toTopOf="@+id/img_cnp" />
+
+    <ImageView
+        android:id="@+id/img_cuchara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cuchara"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_cnp"
+        app:layout_constraintStart_toEndOf="@+id/img_cnp"
+        app:layout_constraintTop_toTopOf="@+id/img_cnp" />
+
+    <ImageView
+        android:id="@+id/img_subtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/nutricion_profesional"
+        android:alpha="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_cnp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

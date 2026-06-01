@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FBF1">
+    android:background="@color/md_theme_background">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavigation"
-        android:scrollbars="none">
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,433 +25,529 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="32dp">
-                <ImageView
-                    android:id="@+id/ivMenu"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_sort_by_size"
-                    app:tint="#3E6837"
-                    android:layout_alignParentStart="true"
-                    android:contentDescription="Menú Lateral" />
-                <ImageView
-                    android:id="@+id/ivNotif"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_popup_reminder"
-                    app:tint="#3E6837"
-                    android:layout_alignParentEnd="true"
-                    android:contentDescription="Notificaciones" />
-            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvSaludo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Buenos días, Licenciado(a) 👋"
-                android:textColor="#7A8B7A"
-                android:textSize="14sp"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="24dp"/>
-
-            <TextView
-                android:id="@+id/tvTituloPrincipal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="¿Qué deseas\ngestionar hoy?"
-                android:textColor="#3E6837"
-                android:textStyle="bold"
-                android:textSize="28sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="24dp"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="24dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingHorizontal="16dp">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@android:drawable/ic_menu_search"
-                        app:tint="#A0B0A0"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/card_profile_image"
+                    android:layout_marginEnd="16dp">
+
                     <TextView
+                        android:id="@+id/tvSaludo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Buscar paciente por DNI o nombre..."
-                        android:textColor="#A0B0A0"
-                        android:textSize="14sp"
-                        android:layout_marginStart="12dp"/>
+                        android:text="Hola, Lic. Mendoza"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="4dp">
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@android:drawable/presence_online"
+                            app:tint="#4CAF50" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Datos respaldados"
+                            android:textColor="#757575"
+                            android:textSize="12sp" />
+                    </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_profile_image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="0dp">
+
+                    <ImageView
+                        android:id="@+id/img_profile_dashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_camera" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="24dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="24dp"
+                android:orientation="horizontal"
                 android:weightSum="2">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_metric_pacientes"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="#FFFFFF">
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/md_theme_primary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="14dp">
+                        android:padding="16dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Pacientes Activos"
-                            android:textSize="12sp"
-                            android:textColor="#7A8B7A"/>
+                            android:textColor="#D7E8D5"
+                            android:textSize="12sp" />
                         <TextView
                             android:id="@+id/tvCountPacientes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="..."
-                            android:textSize="24sp"
-                            android:textStyle="bold"
-                            android:textColor="#3E6837"
-                            android:layout_marginTop="2dp"/>
+                            android:text="2"
+                            android:textColor="#FFFFFF"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_metric_consultas"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="#FFFFFF">
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#E0E0E0"
+                    app:strokeWidth="1dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="14dp">
+                        android:padding="16dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Consultas del Mes"
-                            android:textSize="12sp"
-                            android:textColor="#7A8B7A"/>
+                            android:textColor="#757575"
+                            android:textSize="12sp" />
                         <TextView
                             android:id="@+id/tvCountConsultas"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="..."
-                            android:textSize="24sp"
-                            android:textStyle="bold"
-                            android:textColor="#3E6837"
-                            android:layout_marginTop="2dp"/>
+                            android:text="1"
+                            android:textColor="@color/md_theme_primary"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:paddingHorizontal="24dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Próximas Citas"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="#3E6837"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ver todas"
-                    android:textColor="#3E6837"
-                    android:textStyle="bold"
-                    android:textSize="13sp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
-            </RelativeLayout>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:paddingHorizontal="18dp"
+                android:layout_marginTop="24dp"
                 android:clipToPadding="false"
+                android:paddingHorizontal="24dp"
                 android:scrollbars="none">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="150dp"
-                        android:layout_height="160dp"
-                        android:layout_margin="6dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        app:cardBackgroundColor="#FFFFFF">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:padding="14dp"
-                            android:gravity="center_horizontal">
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
-                                app:cardCornerRadius="22dp"
-                                app:cardElevation="0dp"
-                                app:cardBackgroundColor="#F8FBF1">
-                                <ImageView
-                                    android:layout_width="22dp"
-                                    android:layout_height="22dp"
-                                    android:layout_gravity="center"
-                                    android:src="@android:drawable/ic_menu_my_calendar"
-                                    app:tint="#3E6837"/>
-                            </androidx.cardview.widget.CardView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Carlos Mendoza"
-                                android:textStyle="bold"
-                                android:textColor="#3E6837"
-                                android:textSize="14sp"
-                                android:layout_marginTop="12dp"
-                                android:ellipsize="end"
-                                android:maxLines="1"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="10:30 AM"
-                                android:textColor="#7A8B7A"
-                                android:textSize="12sp"
-                                android:layout_marginTop="2dp"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Control"
-                                android:textColor="#3E6837"
-                                android:textSize="11sp"
-                                android:textStyle="bold"
-                                android:layout_marginTop="10dp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:id="@+id/btnAccionNuevoPac"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_bottom_card_light"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@android:drawable/ic_menu_add"
+                            app:tint="@color/md_theme_primary" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Nuevo\nPaciente"
+                            android:textAlignment="center"
+                            android:textColor="#333333"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="150dp"
-                        android:layout_height="160dp"
-                        android:layout_margin="6dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        app:cardBackgroundColor="#FFFFFF">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:padding="14dp"
-                            android:gravity="center_horizontal">
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
-                                app:cardCornerRadius="22dp"
-                                app:cardElevation="0dp"
-                                app:cardBackgroundColor="#F8FBF1">
-                                <ImageView
-                                    android:layout_width="22dp"
-                                    android:layout_height="22dp"
-                                    android:layout_gravity="center"
-                                    android:src="@android:drawable/ic_menu_my_calendar"
-                                    app:tint="#3E6837"/>
-                            </androidx.cardview.widget.CardView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Ana Espinoza"
-                                android:textStyle="bold"
-                                android:textColor="#3E6837"
-                                android:textSize="14sp"
-                                android:layout_marginTop="12dp"
-                                android:ellipsize="end"
-                                android:maxLines="1"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="04:15 PM"
-                                android:textColor="#7A8B7A"
-                                android:textSize="12sp"
-                                android:layout_marginTop="2dp"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1ra Visita"
-                                android:textColor="#3E6837"
-                                android:textSize="11sp"
-                                android:textStyle="bold"
-                                android:layout_marginTop="10dp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:id="@+id/btnAccionDietas"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_bottom_card_light"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@android:drawable/ic_menu_agenda"
+                            app:tint="@color/md_theme_primary" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Gestión de\nRecetas"
+                            android:textAlignment="center"
+                            android:textColor="#333333"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btnAccionNuevaConsulta"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_bottom_card_light"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="2dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@android:drawable/ic_menu_edit"
+                            app:tint="@color/md_theme_primary" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Nueva\nConsulta"
+                            android:textAlignment="center"
+                            android:textColor="#333333"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Acciones Rápidas"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#3E6837"
-                android:layout_marginTop="24dp"
-                android:layout_marginStart="24dp"/>
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Citas de Hoy"
+                    android:textColor="@color/md_theme_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvVerTodoCitas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="Ver Todo"
+                    android:textColor="#ECA869"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="4dp"/>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="14dp"
-                android:paddingHorizontal="24dp"
-                android:weightSum="4">
+                android:orientation="vertical"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="12dp">
 
-                <LinearLayout
-                    android:id="@+id/btnAccionNuevoPac"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_cita_1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="?attr/selectableItemBackground">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        app:cardBackgroundColor="#ECA869">
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:src="@android:drawable/ic_menu_add"
-                            app:tint="#FFFFFF"/>
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Añadir\nPaciente"
-                        android:textAlignment="center"
-                        android:textSize="11sp"
-                        android:textColor="#3E6837"
-                        android:layout_marginTop="6dp"/>
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:padding="12dp"
+                        android:gravity="center_vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:paddingEnd="12dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="09:00"
+                                android:textColor="@color/md_theme_primary"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AM"
+                                android:textColor="#757575"
+                                android:textSize="10sp"/>
+                        </LinearLayout>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#EEEEEE"
+                            android:layout_marginEnd="12dp"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Carlos Ruiz"
+                                android:textColor="#333333"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Control Nutricional"
+                                android:textColor="#757575"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@android:drawable/ic_media_play"
+                            app:tint="@color/md_theme_primary"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                <LinearLayout
-                    android:id="@+id/btnAccionNuevaConsulta"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_cita_2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="?attr/selectableItemBackground">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        app:cardBackgroundColor="#90C392">
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:src="@android:drawable/ic_menu_agenda"
-                            app:tint="#3E6837"/>
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nueva\nConsulta"
-                        android:textAlignment="center"
-                        android:textSize="11sp"
-                        android:textColor="#3E6837"
-                        android:layout_marginTop="6dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/btnAccionCalculadora"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="?attr/selectableItemBackground">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        app:cardBackgroundColor="#90C392">
+                        android:orientation="horizontal"
+                        android:padding="12dp"
+                        android:gravity="center_vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:paddingEnd="12dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="11:30"
+                                android:textColor="@color/md_theme_primary"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AM"
+                                android:textColor="#757575"
+                                android:textSize="10sp"/>
+                        </LinearLayout>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#EEEEEE"
+                            android:layout_marginEnd="12dp"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ana Sofia Paz"
+                                android:textColor="#333333"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Primera Consulta"
+                                android:textColor="#757575"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
                         <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:src="@android:drawable/ic_menu_edit"
-                            app:tint="#3E6837"/>
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Calc.\nEnergía"
-                        android:textAlignment="center"
-                        android:textSize="11sp"
-                        android:textColor="#3E6837"
-                        android:layout_marginTop="6dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/btnAccionExportar"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="?attr/selectableItemBackground">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        app:cardBackgroundColor="#90C392">
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="center"
-                            android:src="@android:drawable/ic_menu_share"
-                            app:tint="#3E6837"/>
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Enviar\nDieta"
-                        android:textAlignment="center"
-                        android:textSize="11sp"
-                        android:textColor="#3E6837"
-                        android:layout_marginTop="6dp"/>
-                </LinearLayout>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@android:drawable/ic_media_play"
+                            app:tint="@color/md_theme_primary"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp"
+                android:text="Pacientes Recientes"
+                android:textColor="@color/md_theme_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clipToPadding="false"
+                android:paddingHorizontal="24dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Jorge Perez"
+                                android:textColor="#333333"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Última: Ayer"
+                                android:textColor="#757575"
+                                android:textSize="10sp"
+                                android:layout_marginTop="2dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:backgroundTint="#EFF8DA"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="Diabético"
+                                android:textColor="@color/md_theme_primary"
+                                android:textSize="10sp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Lucia Gómez"
+                                android:textColor="#333333"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Última: Hace 3 días"
+                                android:textColor="#757575"
+                                android:textSize="10sp"
+                                android:layout_marginTop="2dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:backgroundTint="#FFE4D6"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="Alta Proteína"
+                                android:textColor="#D84315"
+                                android:textSize="10sp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
     </ScrollView>
 
@@ -457,14 +555,13 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#3E6837"
-        app:itemIconTint="@color/nav_item_colors"
-        app:itemTextColor="@color/nav_item_colors"
-        app:itemPaddingTop="12dp"
-        app:itemPaddingBottom="12dp"
-        app:itemIconSize="24dp"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu" />
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        app:itemIconTint="@color/md_theme_primary"
+        app:itemTextColor="@color/md_theme_primary"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

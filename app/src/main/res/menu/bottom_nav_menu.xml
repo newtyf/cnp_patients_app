@@ -2,19 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
         android:title="Home" />
-
     <item
         android:id="@+id/nav_pacientes"
-        android:icon="@android:drawable/ic_menu_recent_history"
-        android:title="Pacientes" />
-
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Consultas" />
     <item
-        android:id="@+id/nav_dietas"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="Dietas" />
-
+        android:id="@+id/nav_recetas"
+        android:icon="@drawable/ic_dietas"
+        android:title="Recetas" />
     <item
         android:id="@+id/nav_mapa"
         android:icon="@android:drawable/ic_dialog_map"

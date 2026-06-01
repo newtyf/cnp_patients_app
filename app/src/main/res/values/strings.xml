@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">cnp_patients_app</string>
+    <string name="terminos_condiciones_texto">
+        Términos y Condiciones de Uso\n
+        Última actualización: 25 de mayo de 2026\n\n
+        Bienvenido/a a CNP Nutrición Profesional (en adelante, "la Aplicación"). Al registrarse, acceder o utilizar la Aplicación, usted (en adelante, "el Usuario" o "el Profesional") acepta estar sujeto a los presentes Términos y Condiciones. Si no está de acuerdo con estos términos, le rogamos que no utilice la Aplicación.\n\n
+        1. Descripción del Servicio\n
+        La Aplicación es una herramienta de gestión digital diseñada exclusivamente para facilitar el trabajo de los profesionales de la nutrición. Sus funcionalidades incluyen el registro de pacientes, seguimiento de consultas, cálculo de métricas antropométricas (IMC, requerimiento calórico) y gestión de agenda.\n\n
+        2. Registro y Cuentas de Usuario\n
+        • Uso Profesional: El uso de esta Aplicación está restringido a profesionales de la salud capacitados. Al registrarse, el Usuario declara poseer un número de colegiatura válido (C.N.P. u homólogo).\n
+        • Veracidad de la Información: El Usuario se compromete a proporcionar información real, precisa y actualizada durante el proceso de registro.\n
+        • Seguridad de la Cuenta: El Usuario es el único responsable de mantener la confidencialidad de su contraseña y de todas las actividades que ocurran bajo su cuenta.\n\n
+        3. Privacidad y Protección de Datos Personales\n
+        El manejo de los datos dentro de la Aplicación se rige por la Ley N° 29733, Ley de Protección de Datos Personales y su Reglamento.\n
+        • Almacenamiento Local: Actualmente, la Aplicación almacena la información de los pacientes de forma local en la memoria del dispositivo móvil del Usuario (mediante bases de datos SQLite).\n
+        • Responsabilidad del Profesional: El Usuario asume el rol de "Titular del Banco de Datos" respecto a la información clínica y personal de los pacientes que ingrese en la Aplicación. Es responsabilidad estricta del Usuario obtener el consentimiento informado de sus pacientes antes de registrar sus datos antropométricos y personales, así como garantizar la seguridad física de su dispositivo móvil para evitar accesos no autorizados.\n\n
+        4. Uso Aceptable\n
+        El Usuario se compromete a no utilizar la Aplicación para:\n
+        • Almacenar información de pacientes sin su consentimiento explícito.\n
+        • Realizar diagnósticos médicos automatizados; la Aplicación es una herramienta de apoyo que no sustituye el criterio clínico del profesional.\n
+        • Intentar vulnerar la seguridad, realizar ingeniería inversa o alterar el código fuente de la Aplicación.\n\n
+        5. Limitación de Responsabilidad\n
+        • Pérdida de Datos: Dado que la información se almacena localmente en el dispositivo del Usuario, los desarrolladores de la Aplicación no se hacen responsables por la pérdida de información derivada de la eliminación de la app, daño del dispositivo, robo o fallas de hardware. Se recomienda al Usuario realizar copias de seguridad de forma periódica.\n
+        • Decisiones Clínicas: Los cálculos energéticos y métricas proporcionadas por la Aplicación están basados en fórmulas estándar. Los desarrolladores no asumen responsabilidad por tratamientos, dietas o decisiones clínicas tomadas en base a dichos cálculos.\n\n
+        6. Propiedad Intelectual\n
+        Todos los derechos, títulos e intereses sobre la Aplicación, incluyendo su diseño, código fuente, logotipos y funcionalidades, son propiedad exclusiva del equipo desarrollador de CNP Nutrición Profesional. Queda estrictamente prohibida su reproducción, distribución o modificación sin autorización previa.\n\n
+        7. Modificaciones a los Términos\n
+        Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Se notificará a los Usuarios sobre cambios significativos a través de un aviso dentro de la Aplicación. El uso continuo de la Aplicación después de dichas modificaciones constituirá la aceptación de los nuevos términos.\n\n
+        8. Legislación Aplicable y Jurisdicción\n
+        Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de la República del Perú. Cualquier controversia que surja en relación con la Aplicación será sometida a la jurisdicción de los jueces y tribunales competentes de Lima, Perú.
+    </string>
 </resources>

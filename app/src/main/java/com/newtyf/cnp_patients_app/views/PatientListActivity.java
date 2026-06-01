@@ -1,17 +1,7 @@
 package com.newtyf.cnp_patients_app.views;
 
 import android.content.Intent;
-import android.content.om.FabricatedOverlay;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.PopupMenu;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,95 +10,79 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.chip.Chip;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.newtyf.cnp_patients_app.MainActivity;
 import com.newtyf.cnp_patients_app.R;
-import com.newtyf.cnp_patients_app.models.Patient;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 public class PatientListActivity extends AppCompatActivity {
 
-    TableLayout tblPacientes;
-    FloatingActionButton fabCreatePatient;
-    LinearLayout containerCards;
+    private BottomNavigationView bottomNavigation;
+    private FloatingActionButton fabAddPatient;
+    private com.google.android.material.button.MaterialButton btnNuevaConsultaPac1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_patient_list);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        fabCreatePatient = findViewById(R.id.fabCreatePatient);
-        fabCreatePatient.setOnClickListener(this::GoToCreatePatient);
+        // 1. Configurar FAB para ir al Formulario de Nuevo Paciente
+        fabAddPatient = findViewById(R.id.fab_add_patient);
+        fabAddPatient.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientListActivity.this, PatientCreateActivity.class);
+            startActivity(intent);
+        });
 
-        containerCards = findViewById(R.id.containerCards);
+        btnNuevaConsultaPac1 = findViewById(R.id.btn_nueva_consulta_pac1);
+        btnNuevaConsultaPac1.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientListActivity.this, ConsultationActivity.class);
+            startActivity(intent);
+        });
+
+        // 2. Configurar el Menú Inferior (Bottom Navigation)
+        configurarNavegacionInferior();
+    }
+
+    private void configurarNavegacionInferior() {
+        bottomNavigation = findViewById(R.id.bottomNavigation);
+
+        // Marcamos la pestaña "Consultas" (nav_pacientes) como activa
+        bottomNavigation.setSelectedItemId(R.id.nav_pacientes);
+
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_pacientes) {
+                return true; // Ya estamos en esta pantalla
+            } else if (itemId == R.id.nav_home) {
+                // Volver al Dashboard
+                startActivity(new Intent(PatientListActivity.this, DashboardActivity.class));
+                overridePendingTransition(0, 0);
+                finish();
+                return true;
+            } else if (itemId == R.id.nav_recetas) {
+                Toast.makeText(this, "Módulo de recetas en desarrollo", Toast.LENGTH_SHORT).show();
+                return false;
+            } else if (itemId == R.id.nav_mapa) {
+                Toast.makeText(this, "Mapa en desarrollo", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            return false;
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        containerCards.removeAllViews();
-        loadCards();
-    }
-
-    private void loadCards() {
-
-        List<Patient> lista = MainActivity.pacientes;
-
-        for (Patient p : lista) {
-            View card = LayoutInflater.from(this).inflate(R.layout.item_patient, containerCards, false);
-
-            TextView tvName = card.findViewById(R.id.tvPatientName);
-            Chip chipDni = card.findViewById(R.id.chipDni);
-            Chip chipAge = card.findViewById(R.id.chipAge);
-            TextView tvLastConsult = card.findViewById(R.id.tvLastConsult);
-            ImageButton btnMenuPatient = card.findViewById(R.id.btnMenuPatient);
-
-            tvName.setText(p.getName());
-            chipAge.setText(p.getAge() + " AÑOS");
-            chipDni.setText("DNI: " + p.getDni());
-            tvLastConsult.setText(p.getBirthDate());
-
-            btnMenuPatient.setOnClickListener(v -> {
-//                PopupMenu popup = new PopupMenu(this, v);
-//                popup.inflate(R.menu.menu_patient_card);
-//
-//                popup.setOnMenuItemClickListener(item -> {
-//                    if (item.getItemId() == R.id.actionDetail) {
-//
-//                    }
-//                    return false;
-//                });
-//
-//                popup.show();
-
-
-                Intent intent = new Intent(this, PatientDetailActivity.class);
-                intent.putExtra("dni", p.getDni());
-                startActivity(intent);
-            });
-
-            containerCards.addView(card);
-
+        // Aseguramos que la pestaña inferior siga marcada si volvemos a esta vista
+        if (bottomNavigation != null) {
+            bottomNavigation.setSelectedItemId(R.id.nav_pacientes);
         }
-    }
-
-    public void GoToCreatePatient(View view) {
-        Intent intent = new Intent(this, PatientCreateActivity.class);
-        startActivity(intent);
-    }
-
-    public void Logout(View view) {
-        finish();
     }
 }
