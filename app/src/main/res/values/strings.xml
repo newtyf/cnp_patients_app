@@ -3,6 +3,35 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Create Patient Fragment -->
+    <string name="create_patient_title">Nuevo Paciente</string>
+    <string name="create_patient_back_desc">Volver</string>
+    <string name="create_patient_photo_desc">Agregar foto del paciente</string>
+    <string name="create_patient_photo_hint">Foto del paciente (opcional). Ayuda a identificar\nal paciente rápidamente en su próxima visita.</string>
+    <string name="create_patient_section_personal">Datos Personales</string>
+    <string name="create_patient_section_contacto">Información de Contacto</string>
+    <string name="create_patient_section_adicional">Información Adicional</string>
+    <string name="create_patient_label_nombre">Nombre</string>
+    <string name="create_patient_hint_nombre">Ej: Juan</string>
+    <string name="create_patient_label_apellido">Apellido</string>
+    <string name="create_patient_hint_apellido">Ej: Pérez García</string>
+    <string name="create_patient_label_id">DNI / ID Number</string>
+    <string name="create_patient_hint_id">8 dígitos</string>
+    <string name="create_patient_label_fecha">Fecha de Nacimiento</string>
+    <string name="create_patient_hint_fecha">dd/mm/aaaa</string>
+    <string name="create_patient_label_genero">Género</string>
+    <string name="create_patient_genero_m">Masculino</string>
+    <string name="create_patient_genero_f">Femenino</string>
+    <string name="create_patient_genero_o">Otro</string>
+    <string name="create_patient_label_telefono">Teléfono</string>
+    <string name="create_patient_hint_telefono">Ej: 987654321</string>
+    <string name="create_patient_label_email">Correo electrónico</string>
+    <string name="create_patient_hint_email">paciente@ejemplo.com</string>
+    <string name="create_patient_label_notas">Notas</string>
+    <string name="create_patient_hint_notas">Observaciones, objetivos, antecedentes…</string>
+    <string name="create_patient_btn_guardar">Registrar Paciente</string>
+    <string name="create_patient_btn_cancelar">Cancelar</string>
+
     <!-- Paciente List Fragment -->
     <string name="paciente_list_title">CNP Gestión</string>
     <string name="paciente_list_search_hint">Buscar paciente por nombre o DNI…</string>

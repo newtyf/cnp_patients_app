@@ -4,20 +4,24 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.newtyf.cnp_patients_app.NutritionistApp;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointBackward;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.textfield.TextInputLayout;
 import com.newtyf.cnp_patients_app.R;
-import com.newtyf.cnp_patients_app.data.model.Patient;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class PatientCreateFragment extends Fragment {
 
-    private EditText txtName, txtDni, txtEmail, txtPhone, txtBirthDate, txtObjective;
+    private TextInputLayout tfFechaNac;
 
     public static PatientCreateFragment newInstance() {
         return new PatientCreateFragment();
@@ -32,32 +36,39 @@ public class PatientCreateFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        txtName = view.findViewById(R.id.txtNombrePac);
-        txtDni = view.findViewById(R.id.txtDniPac);
-        txtEmail = view.findViewById(R.id.txtEmailPac);
-        txtPhone = view.findViewById(R.id.txtTelefonoPac);
-        txtBirthDate = view.findViewById(R.id.txtFechaNacPac);
-        txtObjective = view.findViewById(R.id.txtObjetivoPac);
+        tfFechaNac = view.findViewById(R.id.tfFechaNac);
 
-        view.findViewById(R.id.btnSave).setOnClickListener(v -> savePatient());
-        view.findViewById(R.id.btnBack).setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
+        view.findViewById(R.id.btnBack).setOnClickListener(v ->
+                requireActivity().getSupportFragmentManager().popBackStack());
+
+        view.findViewById(R.id.btnCancelar).setOnClickListener(v ->
+                requireActivity().getSupportFragmentManager().popBackStack());
+
+        setupDatePicker();
+
+        // TODO: btnGuardar — implementar cuando tengamos BD
     }
 
-    private void savePatient() {
-        String name = txtName.getText().toString().trim();
-        String dni = txtDni.getText().toString().trim();
-        String email = txtEmail.getText().toString().trim();
-        String phone = txtPhone.getText().toString().trim();
-        String birthDate = txtBirthDate.getText().toString().trim();
-        String objective = txtObjective.getText().toString().trim();
+    private void setupDatePicker() {
+        MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.create_patient_label_fecha)
+                .setCalendarConstraints(new CalendarConstraints.Builder()
+                        .setValidator(DateValidatorPointBackward.now())
+                        .build())
+                .build();
 
-        if (name.isEmpty() || dni.isEmpty()) {
-            Toast.makeText(getContext(), "Name and DNI are required", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        datePicker.addOnPositiveButtonClickListener(selection -> {
+            String fecha = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    .format(new Date(selection));
+            if (tfFechaNac.getEditText() != null) {
+                tfFechaNac.getEditText().setText(fecha);
+            }
+        });
 
-        NutritionistApp.pacientes.add(new Patient(name, dni, email, phone, birthDate, objective));
-        Toast.makeText(getContext(), "Patient created", Toast.LENGTH_SHORT).show();
-        requireActivity().getSupportFragmentManager().popBackStack();
+        tfFechaNac.setEndIconOnClickListener(v ->
+                datePicker.show(getParentFragmentManager(), "date_picker"));
+
+        tfFechaNac.getEditText().setOnClickListener(v ->
+                datePicker.show(getParentFragmentManager(), "date_picker"));
     }
 }

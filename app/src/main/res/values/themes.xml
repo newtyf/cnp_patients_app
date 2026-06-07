@@ -78,6 +78,17 @@
         <item name="cornerRadius">8dp</item>
     </style>
 
+    <style name="ScreenTitleText" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyButtonOutlinedStyle" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">8dp</item>
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
     <!-- PIN Activity -->
     <style name="PinHeaderText" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:textColor">?attr/colorOnSurface</item>
