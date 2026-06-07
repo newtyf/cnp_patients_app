@@ -1,70 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.patients.list.PacienteListFragment">
 
-<TextView
-    android:id="@+id/tvTitle"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:text="CNP - Lista de Pacientes"
-    android:textSize="20sp"
-    android:layout_margin="16dp"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
-
-<com.google.android.material.divider.MaterialDivider
-    android:id="@+id/layout_divider"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    app:layout_constraintTop_toBottomOf="@id/tvTitle"
-    app:layout_constraintBottom_toTopOf="@+id/scrollCards"/>
-
-<!--    <Button-->
-<!--        android:id="@+id/btnNewPatient"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="+ Nuevo Paciente"-->
-<!--        android:onClick="GoToCreatePatient"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvTitle"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-<ScrollView
-    android:id="@+id/scrollCards"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginBottom="12dp"
-    app:layout_constraintTop_toBottomOf="@id/layout_divider"
-    app:layout_constraintBottom_toTopOf="@id/fabCreatePatient"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
-
+    <!-- Header -->
     <LinearLayout
-        android:id="@+id/containerCards"
-        android:layout_width="match_parent"
+        android:id="@+id/header"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    </LinearLayout>
-</ScrollView>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fabCreatePatient"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginBottom="48dp"
-    app:srcCompat="@drawable/ic_add"
-    app:materialThemeOverlay="@style/ThemeOverlay.Material3.FloatingActionButton.Surface"
-    app:fabSize="normal"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/paciente_list_title"
+            style="?attr/textAppearanceTitleLarge" />
+
+        <ImageButton
+            android:id="@+id/btnPerfil"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_person"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/paciente_list_profile_desc"
+            app:tint="?attr/colorOnSurface" />
+
+    </LinearLayout>
+
+    <!-- Buscador -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        app:startIconDrawable="@drawable/ic_search"
+        app:hintEnabled="false"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/paciente_list_search_hint"
+            android:inputType="text"
+            android:imeOptions="actionSearch" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Lista de pacientes -->
+    <ScrollView
+        android:id="@+id/scrollCards"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        app:layout_constraintBottom_toTopOf="@id/fabCreatePatient"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/containerCards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </ScrollView>
+
+    <!-- FAB agregar paciente -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCreatePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="48dp"
+        app:srcCompat="@drawable/ic_add"
+        app:materialThemeOverlay="@style/ThemeOverlay.Material3.FloatingActionButton.Surface"
+        app:fabSize="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

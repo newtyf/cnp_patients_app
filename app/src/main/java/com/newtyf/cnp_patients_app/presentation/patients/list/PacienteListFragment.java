@@ -42,6 +42,12 @@ public class PacienteListFragment extends Fragment {
 
         containerCards = view.findViewById(R.id.containerCards);
 
+        ImageButton btnPerfil = view.findViewById(R.id.btnPerfil);
+        // TODO: navegar a perfil de nutricionista
+
+        // TODO: filtrar lista al escribir
+        // view.findViewById(R.id.etBuscar)
+
         FloatingActionButton fab = view.findViewById(R.id.fabCreatePatient);
         fab.setOnClickListener(v -> requireActivity().getSupportFragmentManager()
                 .beginTransaction()

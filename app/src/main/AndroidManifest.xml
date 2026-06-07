@@ -24,6 +24,7 @@
         <activity android:name=".presentation.auth.login.LoginActivity"/>
         <activity android:name=".presentation.main.MainActivity" />
         <activity android:name=".presentation.auth.register.RegisterActivity" />
+        <activity android:name=".presentation.auth.pin.PinActivity" />
     </application>
 
 </manifest>

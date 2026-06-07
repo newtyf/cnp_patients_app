@@ -2,4 +2,36 @@
     <string name="app_name">cnp_patients_app</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Paciente List Fragment -->
+    <string name="paciente_list_title">CNP Gestión</string>
+    <string name="paciente_list_search_hint">Buscar paciente por nombre o DNI…</string>
+    <string name="paciente_list_profile_desc">Ir a perfil</string>
+
+    <!-- Register Activity -->
+    <string name="register_go_to_login">Iniciar sesión</string>
+    <string name="register_title">Crear cuenta</string>
+    <string name="register_subtitle">Completa tus datos para registrarte como nutricionista</string>
+    <string name="register_label_nombre">Nombre completo</string>
+    <string name="register_hint_nombre">Ej: María García</string>
+    <string name="register_label_email">Correo electrónico</string>
+    <string name="register_hint_email">nutricionista@ejemplo.com</string>
+    <string name="register_label_licencia">Número de licencia</string>
+    <string name="register_hint_licencia">Ej: CNP-12345</string>
+    <string name="register_label_especialidad">Especialidad</string>
+    <string name="register_hint_especialidad">Selecciona una especialidad</string>
+    <string name="register_label_password">Contraseña</string>
+    <string name="register_hint_password">Mínimo 8 caracteres</string>
+    <string name="register_label_confirm_password">Confirmar contraseña</string>
+    <string name="register_hint_confirm_password">Repite tu contraseña</string>
+    <string name="register_button">Registrarme</string>
+
+    <!-- PIN Activity -->
+    <string name="pin_header">Configurar Acceso</string>
+    <string name="pin_subtitle">Crea un PIN de 4 dígitos para proteger tu\ninformación clínica local</string>
+    <string name="pin_confirm_button">Confirmar PIN</string>
+    <string name="pin_biometric_label">Habilitar Biometría</string>
+    <string name="pin_icon_desc">Icono de seguridad</string>
+    <string name="pin_biometric_icon_desc">Icono de huella digital</string>
+    <string name="pin_delete_desc">Borrar dígito</string>
 </resources>

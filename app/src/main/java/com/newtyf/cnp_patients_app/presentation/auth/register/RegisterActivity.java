@@ -1,9 +1,9 @@
 package com.newtyf.cnp_patients_app.presentation.auth.register;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,12 +11,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.newtyf.cnp_patients_app.R;
-import com.newtyf.cnp_patients_app.presentation.main.MainActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText txtNombre, txtDni, txtEmailReg, txtTelefono, txtEspecialidad, txtPasswordReg;
+    private TextInputLayout tfNombre, tfEmail, tfLicencia, tfEspecialidad, tfPassword, tfConfirmPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +29,32 @@ public class RegisterActivity extends AppCompatActivity {
             return insets;
         });
 
-        txtNombre = findViewById(R.id.txtNombre);
-        txtDni = findViewById(R.id.txtDni);
-        txtEmailReg = findViewById(R.id.txtEmailReg);
-        txtTelefono = findViewById(R.id.txtTelefono);
-        txtEspecialidad = findViewById(R.id.txtEspecialidad);
-        txtPasswordReg = findViewById(R.id.txtPasswordReg);
+        initViews();
+        setupEspecialidadDropdown();
+    }
+
+    private void initViews() {
+        tfNombre = findViewById(R.id.tfNombre);
+        tfEmail = findViewById(R.id.tfEmail);
+        tfLicencia = findViewById(R.id.tfLicencia);
+        tfEspecialidad = findViewById(R.id.tfEspecialidad);
+        tfPassword = findViewById(R.id.tfPassword);
+        tfConfirmPassword = findViewById(R.id.tfConfirmPassword);
+    }
+
+    private void setupEspecialidadDropdown() {
+        AutoCompleteTextView actv = findViewById(R.id.actvEspecialidad);
+        String[] especialidades = getResources().getStringArray(R.array.especialidades);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_dropdown_item_1line,
+                especialidades
+        );
+        actv.setAdapter(adapter);
     }
 
     public void Register(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        // TODO: implementar lógica de registro
     }
 
     public void GoBack(View view) {

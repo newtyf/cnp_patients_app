@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.newtyf.cnp_patients_app.R;
-import com.newtyf.cnp_patients_app.presentation.main.MainActivity;
+import com.newtyf.cnp_patients_app.presentation.auth.pin.PinActivity;
 import com.newtyf.cnp_patients_app.presentation.auth.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -37,9 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void GoToPatientList(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, PinActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void GoToRegister(View view) {

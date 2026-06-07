@@ -5,168 +5,196 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp"
+        android:orientation="vertical">
+
+        <!-- Botón Iniciar sesión (esquina superior derecha) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_go_to_login"
+            style="@style/MyButtonTonalStyle"
+            android:layout_gravity="end"
+            android:layout_marginBottom="24dp"
+            android:onClick="GoBack" />
+
+        <!-- Título y subtítulo -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_title"
+            style="?attr/textAppearanceHeadlineSmall"
+            android:layout_marginBottom="4dp" />
 
         <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CNP - Registro de Nutricionista"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/register_subtitle"
+            style="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginBottom="24dp" />
 
+        <!-- Nombre completo -->
         <TextView
-            android:id="@+id/tvNombreLabel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre completo"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/register_label_nombre"
+            style="?attr/textAppearanceLabelLargeEmphasized" />
 
-        <EditText
-            android:id="@+id/txtNombre"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfNombre"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Ej: María García"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/tvNombreLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:startIconDrawable="@drawable/ic_person"
+            app:hintEnabled="false">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_hint_nombre"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Correo electrónico -->
         <TextView
-            android:id="@+id/tvDniLabel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DNI"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/txtNombre"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/register_label_email"
+            style="?attr/textAppearanceLabelLargeEmphasized" />
 
-        <EditText
-            android:id="@+id/txtDni"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfEmail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="12345678"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/tvDniLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:startIconDrawable="@drawable/ic_email"
+            app:hintEnabled="false">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_hint_email"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Número de licencia -->
         <TextView
-            android:id="@+id/tvEmailLabel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Correo electrónico"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/txtDni"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/register_label_licencia"
+            style="?attr/textAppearanceLabelLargeEmphasized" />
 
-        <EditText
-            android:id="@+id/txtEmailReg"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfLicencia"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="nutricionista@ejemplo.com"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/tvEmailLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:startIconDrawable="@drawable/ic_badge"
+            app:hintEnabled="false">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_hint_licencia"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Especialidad (dropdown) -->
         <TextView
-            android:id="@+id/tvTelefonoLabel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Teléfono"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/txtEmailReg"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/register_label_especialidad"
+            style="?attr/textAppearanceLabelLargeEmphasized" />
 
-        <EditText
-            android:id="@+id/txtTelefono"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfEspecialidad"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:hint="987654321"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/tvTelefonoLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            app:hintEnabled="false">
 
+            <AutoCompleteTextView
+                android:id="@+id/actvEspecialidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_hint_especialidad"
+                android:inputType="none"
+                android:focusable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Contraseña -->
         <TextView
-            android:id="@+id/tvEspecialidadLabel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Especialidad"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/txtTelefono"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/register_label_password"
+            style="?attr/textAppearanceLabelLargeEmphasized" />
 
-        <EditText
-            android:id="@+id/txtEspecialidad"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfPassword"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej: Nutrición clínica"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/tvEspecialidadLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:endIconMode="password_toggle"
+            app:hintEnabled="false">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_hint_password"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Confirmar contraseña -->
         <TextView
-            android:id="@+id/tvPasswordLabel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contraseña"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/txtEspecialidad"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/register_label_confirm_password"
+            style="?attr/textAppearanceLabelLargeEmphasized" />
 
-        <EditText
-            android:id="@+id/txtPasswordReg"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfConfirmPassword"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="********"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/tvPasswordLabel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:endIconMode="password_toggle"
+            app:hintEnabled="false">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/register_hint_confirm_password"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Botón registrar -->
         <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="0dp"
+            android:id="@+id/btnRegistrar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
-            android:onClick="Register"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/txtPasswordReg"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/register_button"
+            android:onClick="Register" />
 
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Volver"
-            android:onClick="GoBack"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/btnRegister"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>

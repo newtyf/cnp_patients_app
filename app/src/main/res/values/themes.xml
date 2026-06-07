@@ -77,4 +77,68 @@
     <style name="MyButtonTonalStyle" parent="Widget.Material3.Button.TonalButton">
         <item name="cornerRadius">8dp</item>
     </style>
+
+    <!-- PIN Activity -->
+    <style name="PinHeaderText" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="PinSubtitleText" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="PinDotEmpty">
+        <item name="android:layout_width">14dp</item>
+        <item name="android:layout_height">14dp</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:background">@drawable/pin_dot_empty</item>
+    </style>
+
+    <style name="PinDotFilled">
+        <item name="android:layout_width">14dp</item>
+        <item name="android:layout_height">14dp</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:background">@drawable/pin_dot_filled</item>
+    </style>
+
+    <style name="PinKeyButton" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="cornerRadius">32dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="backgroundTint">?attr/colorSurfaceContainerHigh</item>
+        <item name="elevation">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="PinDeleteButton">
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="PinBiometricCard" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainerLow</item>
+        <item name="strokeColor">?attr/colorOutlineVariant</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="PinBiometricLabel" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="PinConfirmButton" parent="Widget.Material3.Button">
+        <item name="cornerRadius">8dp</item>
+        <item name="backgroundTint">@color/pin_confirm_button_bg</item>
+        <item name="android:textColor">@color/pin_confirm_button_text</item>
+    </style>
 </resources>
