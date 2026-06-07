@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
+
+    <!-- Icono candado -->
+    <ImageView
+        android:id="@+id/ivLock"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_lock"
+        android:contentDescription="@string/pin_icon_desc"
+        app:tint="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@id/tvPinHeader" />
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvPinHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/pin_header"
+        style="@style/PinHeaderText"
+        app:layout_constraintTop_toBottomOf="@id/ivLock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvPinSubtitle" />
+
+    <!-- Subtítulo -->
+    <TextView
+        android:id="@+id/tvPinSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/pin_subtitle"
+        style="@style/PinSubtitleText"
+        app:layout_constraintTop_toBottomOf="@id/tvPinHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/pinIndicators" />
+
+    <!-- Indicadores de dígitos -->
+    <LinearLayout
+        android:id="@+id/pinIndicators"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvPinSubtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/gridTeclado">
+
+        <View style="@style/PinDotEmpty" android:id="@+id/dot1" />
+        <View style="@style/PinDotEmpty" android:id="@+id/dot2" />
+        <View style="@style/PinDotEmpty" android:id="@+id/dot3" />
+        <View style="@style/PinDotEmpty" android:id="@+id/dot4" />
+    </LinearLayout>
+
+    <!-- Teclado numérico -->
+    <GridLayout
+        android:id="@+id/gridTeclado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:columnCount="3"
+        android:rowCount="4"
+        app:layout_constraintTop_toBottomOf="@id/pinIndicators"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cardBiometria">
+
+        <Button android:id="@+id/btn1" style="@style/PinKeyButton" android:text="1" />
+        <Button android:id="@+id/btn2" style="@style/PinKeyButton" android:text="2" />
+        <Button android:id="@+id/btn3" style="@style/PinKeyButton" android:text="3" />
+
+        <Button android:id="@+id/btn4" style="@style/PinKeyButton" android:text="4" />
+        <Button android:id="@+id/btn5" style="@style/PinKeyButton" android:text="5" />
+        <Button android:id="@+id/btn6" style="@style/PinKeyButton" android:text="6" />
+
+        <Button android:id="@+id/btn7" style="@style/PinKeyButton" android:text="7" />
+        <Button android:id="@+id/btn8" style="@style/PinKeyButton" android:text="8" />
+        <Button android:id="@+id/btn9" style="@style/PinKeyButton" android:text="9" />
+
+        <Space android:layout_width="64dp" android:layout_height="64dp" android:layout_margin="5dp" />
+        <Button android:id="@+id/btn0" style="@style/PinKeyButton" android:text="0" />
+        <ImageButton
+            android:id="@+id/btnDelete"
+            style="@style/PinDeleteButton"
+            android:src="@drawable/ic_backspace"
+            android:contentDescription="@string/pin_delete_desc" />
+
+    </GridLayout>
+
+    <!-- Card biometría -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBiometria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        style="@style/PinBiometricCard"
+        app:layout_constraintTop_toBottomOf="@id/gridTeclado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnConfirmarPin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="14dp">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_fingerprint"
+                android:contentDescription="@string/pin_biometric_icon_desc"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:text="@string/pin_biometric_label"
+                style="@style/PinBiometricLabel" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switchBiometria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Botón confirmar PIN -->
+    <Button
+        android:id="@+id/btnConfirmarPin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/pin_confirm_button"
+        android:enabled="false"
+        style="@style/PinConfirmButton"
+        app:layout_constraintTop_toBottomOf="@id/cardBiometria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
