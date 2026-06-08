@@ -60,5 +60,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("com.airbnb.android:lottie:6.1.0")
-// (Verificar la última versión)
+// Dependencias de Room (Sintaxis Kotlin DSL)
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
 }

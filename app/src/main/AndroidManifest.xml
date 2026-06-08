@@ -9,63 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cnp_patients_app">
+
         <activity
-            android:name=".views.RecipeCreateActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.ModalSeleccionarPacienteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.ModalBuscarAlimentoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.DietGeneratorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.LayoutPaso3DiagnosticoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.LayoutPaso2MedidasActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.AgendaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.ConsultationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.DialogSuccessPatientActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.SplashActivity"
+            android:name=".presentacion.auth.ActivitySplash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".views.WelcomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.DashboardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.PatientListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.PatientCreateActivity"
-            android:exported="false" />
+
+        <activity android:name=".presentacion.auth.ActivityBienvenida" />
+        <activity android:name=".presentacion.auth.ActivityLogin" />
+        <activity android:name=".presentacion.auth.ActivityRegistro" />
+
+        <activity android:name=".presentacion.dashboard.ActivityPanelPrincipal" />
+
+        <activity android:name=".presentacion.pacientes.ActivityListaPacientes" />
+        <activity android:name=".presentacion.pacientes.ActivityCrearPaciente" />
+        <activity android:name=".presentacion.pacientes.ActivityDetallePaciente" />
+
+        <activity android:name=".presentacion.consultations.ActivityListaConsultas" />
+        <activity android:name=".presentacion.consultations.ActivityAgenda" />
+        <activity android:name=".presentacion.consultations.ActivityPasosConsulta" />
+
+        <activity android:name=".presentacion.diet.ActivityGeneradorDieta" />
+        <activity android:name=".presentacion.diet.ActivityCrearReceta" />
+
+        <activity android:name=".presentacion.profile.ActivityPerfil" android:exported="false" />
+        <activity android:name=".presentacion.profile.ActivityEditarPersonal" android:exported="false" />
+        <activity android:name=".presentacion.profile.ActivityEditarSeguridad" android:exported="false" />
+        <activity android:name=".presentacion.profile.ActivityEditarDireccion" android:exported="false" />
+
     </application>
 
 </manifest>

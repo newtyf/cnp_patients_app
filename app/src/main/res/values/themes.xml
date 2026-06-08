@@ -52,4 +52,7 @@
     </style>
 
     <style name="Theme.Cnp_patients_app" parent="Base.Theme.Cnp_patients_app" />
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/md_theme_onPrimary</item> </style>
 </resources>

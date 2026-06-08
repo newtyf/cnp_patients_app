@@ -9,9 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.newtyf.cnp_patients_app.models.Patient;
-import com.newtyf.cnp_patients_app.views.DashboardActivity;
-import com.newtyf.cnp_patients_app.views.LoginActivity;
+import com.newtyf.cnp_patients_app.domain.models.Patient;
+import com.newtyf.cnp_patients_app.presentacion.auth.ActivityLogin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,11 +36,22 @@ public class MainActivity extends AppCompatActivity {
 // Dentro de tu MainActivity.java, al final de onCreate():
 
         // Cargar pacientes de prueba
-        pacientes.add(new Patient("Ana Torres", "12345678", "ana@email.com", "987654321", "01/01/1990", "Bajar de peso"));
-        pacientes.add(new Patient("Carlos Ruiz", "87654321", "carlos@email.com", "912345678", "15/06/1985", "Control de glucosa"));
+        pacientes.add(new Patient(
+                "1",              // id
+                "nutri_001",      // nutritionistId
+                "Ana",            // firstName
+                "Torres",         // lastName
+                "12345678",       // idNumber (DNI)
+                "ana@email.com",  // email
+                "987654321",      // phone
+                "01/01/1990",     // birthDate
+                "F",              // gender
+                "",               // photoPath (vacío por ahora)
+                1                 // active (1 = activo)
+        ));
 
         // 1. Ir a la vista de LOGUEO
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, ActivityLogin.class);
         startActivity(intent);
         finish(); // Cierra MainActivity para que no quede en el historial
     }
