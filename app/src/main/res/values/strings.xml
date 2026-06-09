@@ -1,3 +1,330 @@
 <resources>
+    <string name="accion_aceptar">Aceptar</string>
+    <string name="accion_cancelar">Cancelar</string>
     <string name="app_name">cnp_patients_app</string>
+    <string name="terminos_condiciones_texto">
+        Términos y Condiciones de Uso\n
+        Última actualización: 25 de mayo de 2026\n\n
+        Bienvenido/a a CNP Nutrición Profesional (en adelante, "la Aplicación"). Al registrarse, acceder o utilizar la Aplicación, usted (en adelante, "el Usuario" o "el Profesional") acepta estar sujeto a los presentes Términos y Condiciones. Si no está de acuerdo con estos términos, le rogamos que no utilice la Aplicación.\n\n
+        1. Descripción del Servicio\n
+        La Aplicación es una herramienta de gestión digital diseñada exclusivamente para facilitar el trabajo de los profesionales de la nutrición. Sus funcionalidades incluyen el registro de pacientes, seguimiento de consultas, cálculo de métricas antropométricas (IMC, requerimiento calórico) y gestión de agenda.\n\n
+        2. Registro y Cuentas de Usuario\n
+        • Uso Profesional: El uso de esta Aplicación está restringido a profesionales de la salud capacitados. Al registrarse, el Usuario declara poseer un número de colegiatura válido (C.N.P. u homólogo).\n
+        • Veracidad de la Información: El Usuario se compromete a proporcionar información real, precisa y actualizada durante el proceso de registro.\n
+        • Seguridad de la Cuenta: El Usuario es el único responsable de mantener la confidencialidad de su contraseña y de todas las actividades que ocurran bajo su cuenta.\n\n
+        3. Privacidad y Protección de Datos Personales\n
+        El manejo de los datos dentro de la Aplicación se rige por la Ley N° 29733, Ley de Protección de Datos Personales y su Reglamento.\n
+        • Almacenamiento Local: Actualmente, la Aplicación almacena la información de los pacientes de forma local en la memoria del dispositivo móvil del Usuario (mediante bases de datos SQLite).\n
+        • Responsabilidad del Profesional: El Usuario asume el rol de "Titular del Banco de Datos" respecto a la información clínica y personal de los pacientes que ingrese en la Aplicación. Es responsabilidad estricta del Usuario obtener el consentimiento informado de sus pacientes antes de registrar sus datos antropométricos y personales, así como garantizar la seguridad física de su dispositivo móvil para evitar accesos no autorizados.\n\n
+        4. Uso Aceptable\n
+        El Usuario se compromete a no utilizar la Aplicación para:\n
+        • Almacenar información de pacientes sin su consentimiento explícito.\n
+        • Realizar diagnósticos médicos automatizados; la Aplicación es una herramienta de apoyo que no sustituye el criterio clínico del profesional.\n
+        • Intentar vulnerar la seguridad, realizar ingeniería inversa o alterar el código fuente de la Aplicación.\n\n
+        5. Limitación de Responsabilidad\n
+        • Pérdida de Datos: Dado que la información se almacena localmente en el dispositivo del Usuario, los desarrolladores de la Aplicación no se hacen responsables por la pérdida de información derivada de la eliminación de la app, daño del dispositivo, robo o fallas de hardware. Se recomienda al Usuario realizar copias de seguridad de forma periódica.\n
+        • Decisiones Clínicas: Los cálculos energéticos y métricas proporcionadas por la Aplicación están basados en fórmulas estándar. Los desarrolladores no asumen responsabilidad por tratamientos, dietas o decisiones clínicas tomadas en base a dichos cálculos.\n\n
+        6. Propiedad Intelectual\n
+        Todos los derechos, títulos e intereses sobre la Aplicación, incluyendo su diseño, código fuente, logotipos y funcionalidades, son propiedad exclusiva del equipo desarrollador de CNP Nutrición Profesional. Queda estrictamente prohibida su reproducción, distribución o modificación sin autorización previa.\n\n
+        7. Modificaciones a los Términos\n
+        Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Se notificará a los Usuarios sobre cambios significativos a través de un aviso dentro de la Aplicación. El uso continuo de la Aplicación después de dichas modificaciones constituirá la aceptación de los nuevos términos.\n\n
+        8. Legislación Aplicable y Jurisdicción\n
+        Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de la República del Perú. Cualquier controversia que surja en relación con la Aplicación será sometida a la jurisdicción de los jueces y tribunales competentes de Lima, Perú.
+    </string>
+
+    <string name="error_campo_requerido">Este campo es obligatorio</string>
+
+    <string name="welcome_title">Bienvenido a CNP</string>
+    <string name="welcome_desc">Gestiona tus pacientes y consultas de forma eficiente. Diseña pautas, administra pacientes y lleva tu consulta al siguiente nivel.</string>
+    <string name="action_login">Iniciar Sesión</string>
+    <string name="action_register">Registrarse</string>
+    <string name="desc_logo_welcome">Logotipo de CNP Gestión Nutrición Profesional</string>
+
+    <string name="login_title">Bienvenido de nuevo</string>
+    <string name="login_subtitle">Inicia sesión para acceder a tu panel de control.</string>
+    <string name="login_email_hint">Correo electrónico</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="login_action_submit">Ingresar</string>
+    <string name="login_action_register">Crear cuenta</string>
+    <string name="login_banner_info">Acceso exclusivo para nutricionistas colegiados. Requiere conexión a internet para sincronización.</string>
+    <string name="desc_info_icon">Icono de información</string>
+
+    <string name="reg_title">Crear cuenta</string>
+    <string name="reg_subtitle">Únete a nuestra plataforma y optimiza la gestión de tus pacientes.</string>
+    <string name="reg_hint_name">Nombre completo</string>
+    <string name="reg_hint_dni">DNI</string>
+    <string name="reg_hint_email">Correo electrónico</string>
+    <string name="reg_hint_phone">Teléfono</string>
+    <string name="reg_hint_specialty">Especialidad (Ej: Clínica, Deportiva)</string>
+    <string name="reg_hint_password">Contraseña segura</string>
+    <string name="reg_terms">He leído y acepto los Términos y Condiciones</string>
+    <string name="reg_action_submit">Completar Registro</string>
+    <string name="desc_btn_back">Botón para volver a la pantalla anterior</string>
+
+    <string name="dash_greeting">Hola, Lic. Mendoza</string>
+    <string name="dash_sync_status">Datos respaldados</string>
+    <string name="dash_metric_active_patients">Pacientes Activos</string>
+    <string name="dash_metric_monthly_consults">Consultas Activas</string>
+    <string name="dash_action_new_patient">Nuevo\nPaciente</string>
+    <string name="dash_action_recipes">Gestión \nRecetas</string>
+    <string name="dash_action_new_consult">Nueva\nConsulta</string>
+    <string name="dash_section_today_appointments">Consultas por Atender</string>
+    <string name="dash_section_recent_patients">Pacientes Recientes</string>
+    <string name="dash_action_see_all">Ver Todo</string>
+    <string name="desc_profile_image">Foto de perfil del profesional nutricionista</string>
+    <string name="desc_sync_icon">Indicador de estado de conexión</string>
+
+    <string name="title_cnp_gestion">CNP Gestión</string>
+    <string name="subtitle_pacientes_activos">Tus pacientes activos</string>
+    <string name="hint_buscar_paciente">Buscar paciente por nombre o DNI...</string>
+    <string name="label_ultima_consulta">Última Consulta</string>
+    <string name="label_pendiente">Pendiente</string>
+    <string name="btn_nueva_consulta">+ Nueva Consulta</string>
+
+    <string name="title_nuevo_paciente">Nuevo Paciente</string>
+    <string name="hint_nombres">Nombres</string>
+    <string name="hint_apellidos">Apellidos</string>
+    <string name="hint_dni">DNI / Documento</string>
+    <string name="hint_email">Correo Electrónico</string>
+    <string name="hint_telefono">Teléfono</string>
+    <string name="hint_fecha_nacimiento">Fecha de Nacimiento</string>
+    <string name="hint_genero">Género (M/F)</string>
+    <string name="btn_guardar_paciente">Guardar Paciente</string>
+
+    <string name="title_detalle_paciente">Detalle del Paciente</string>
+    <string name="label_datos_personales">Datos Personales</string>
+    <string name="label_contacto">Información de Contacto</string>
+    <string name="btn_editar">Editar Paciente</string>
+    <string name="btn_eliminar">Eliminar Paciente</string>
+    <string name="dialog_eliminar_titulo">¿Eliminar Paciente?</string>
+    <string name="dialog_eliminar_mensaje">¿Estás seguro de que deseas eliminar a este paciente? Toda su información y registro de consultas se perderá. Esta acción no se puede deshacer.</string>
+    <string name="dialog_eliminar_confirmar">Eliminar</string>
+    <string name="dialog_cancelar">Cancelar</string>
+
+    <string name="title_nueva_consulta">Nueva Consulta</string>
+    <string name="hint_seleccionar_paciente">Seleccionar Paciente</string>
+    <string name="hint_fecha_consulta">Fecha de cita</string>
+    <string name="hint_hora_consulta">Hora de cita</string>
+    <string name="hint_tipo_consulta">Tipo de Consulta</string>
+    <string name="hint_motivo">Motivo principal</string>
+    <string name="hint_notas">Notas / Observaciones (Opcional)</string>
+    <string name="btn_agendar_consulta">Agendar Consulta</string>
+
+    <string-array name="array_tipos_consulta">
+        <item>Evaluación Inicial</item>
+        <item>Control de Peso</item>
+        <item>Entrega de Dieta</item>
+        <item>Asesoría Deportiva</item>
+    </string-array>
+
+    <string name="title_lista_consultas">Lista de Consultas</string>
+    <string name="hint_buscar_consulta">Buscar por paciente o motivo...</string>
+    <string name="btn_editar_cita">Editar</string>
+    <string name="btn_eliminar_cita">Eliminar</string>
+    <string name="content_desc_add_consulta">Añadir nueva consulta</string>
+    <string name="content_desc_icono_calendario">Icono de calendario de la consulta</string>
+    <string name="dialog_eliminar_cita_titulo">¿Eliminar Consulta?</string>
+    <string name="dialog_eliminar_cita_mensaje">Esta acción eliminará el registro de la consulta de forma permanente.</string>
+
+    <string name="title_agenda_consultas">Agenda de Consultas</string>
+    <string name="label_citas_hoy">Citas para Hoy</string>
+    <string name="tiempo_am">AM</string>
+    <string name="tiempo_pm">PM</string>
+
+    <string name="profile_back_content_desc">Volver a la pantalla anterior</string>
+    <string name="profile_avatar_content_desc">Foto de perfil del nutricionista</string>
+    <string name="profile_section_general">Configuración General</string>
+    <string name="label_configuracion_general">Configuración General</string>
+    <string name="btn_info_personal">Información Personal (Nombres, Fecha, Sexo)</string>
+    <string name="profile_btn_personal">Información Profesional (Nombres, C.N.P, Especialidad)</string>
+    <string name="btn_contacto_seguridad">Contacto y Seguridad (Email, Clave, Celular)</string>
+    <string name="profile_btn_security">Contacto y Seguridad (Email, Clave, Celular)</string>
+    <string name="btn_direccion_consultorio">Dirección de Consultorio</string>
+    <string name="profile_btn_address">Dirección de Consultorio</string>
+    <string name="btn_cerrar_sesion">Cerrar Sesión</string>
+    <string name="profile_btn_logout">Cerrar Sesión</string>
+    <string name="edit_profile_title">Editar Perfil</string>
+    <string name="edit_profile_fullname">Nombre Completo</string>
+    <string name="edit_profile_license">Número de Colegiatura (C.N.P)</string>
+    <string name="edit_profile_specialty">Especialidad</string>
+    <string name="edit_profile_save">Guardar Cambios</string>
+
+    <string name="title_crear_receta">Crear Nuevo Plato</string>
+    <string name="label_info_general">Información General</string>
+    <string name="hint_nombre_receta">Nombre del Plato (Ej: Desayuno Avena Fit)</string>
+    <string name="hint_categoria_receta">Categoría Ideal</string>
+    <string name="label_ingredientes_plato">Ingredientes del Plato</string>
+    <string name="btn_agregar_ingrediente">+ Agregar</string>
+    <string name="label_resumen_porcion">Resumen por Porción</string>
+    <string name="btn_guardar_bd">Guardar Plato en Base de Datos</string>
+    <string name="title_plan_nutricional">Plan Nutricional</string>
+    <string name="label_paciente">Paciente:</string>
+    <string name="label_seleccionando">Seleccionando...</string>
+    <string name="label_desayuno">Desayuno</string>
+    <string name="btn_add_desayuno">+ Añadir a Desayuno</string>
+    <string name="label_almuerzo">Almuerzo</string>
+    <string name="btn_add_almuerzo">+ Añadir a Almuerzo</string>
+    <string name="label_snack">Snack</string>
+    <string name="btn_add_snack">+ Añadir a Snack</string>
+    <string name="label_cena">Cena</string>
+    <string name="msg_sin_alimentos_cena">No hay alimentos agregados para la cena.</string>
+    <string name="btn_add_cena">+ Añadir a Cena</string>
+    <string name="label_resumen_diario">Resumen Diario</string>
+    <string name="label_objetivo">Objetivo: %1$s kcal</string>
+    <string name="label_calorias_totales">Calorías Totales: %1$s/%2$s kcal</string>
+    <string name="label_meta">Meta: %1$s</string>
+    <string name="btn_exportar_pdf">Exportar PDF</string>
+    <string name="btn_enviar_whatsapp">Enviar por WhatsApp</string>
+    <string name="calorias_unidad">kcal</string>
+    <string name="gramos_unidad">g</string>
+    <string name="proteina_abrev">PROT</string>
+    <string name="carbohidrato_abrev">CARB</string>
+    <string name="grasa_abrev">GRASA</string>
+
+    <string name="modal_buscar_alimento_titulo">Añadir alimento</string>
+    <string name="hint_buscar_alimento_ejemplo">Ej. Manzana, Pollo, Avena...</string>
+    <string name="label_resultados_recientes">Resultados recientes</string>
+    <string name="modal_seleccionar_paciente_titulo">Seleccionar Paciente</string>
+    <string name="modal_seleccionar_paciente_desc">Busca por nombre o DNI para asignarle esta dieta.</string>
+    <string name="modal_paciente_registrado">Paciente Registrado</string>
+
+    <string name="title_medidas_antropometricas">Medidas Antropométricas</string>
+    <string name="hint_peso">PESO (KG)</string>
+    <string name="hint_estatura">ESTATURA (CM)</string>
+    <string name="hint_grasa_corporal">GRASA CORPORAL (%)</string>
+    <string name="hint_masa_muscular">MASA MUSCULAR (%)</string>
+    <string name="label_imc">ÍNDICE DE MASA\nCORPORAL (IMC)</string>
+    <string name="label_esperando_datos">Esperando datos...</string>
+    <string name="label_tmb">TASA METABÓLICA\nBASAL (TMB)</string>
+    <string name="label_formula_mifflin">Mifflin-St Jeor</string>
+    <string name="title_gasto_energetico">Gasto Energético Total</string>
+    <string name="label_naf">NIVEL DE ACTIVIDAD FÍSICA (NAF)</string>
+    <string name="hint_seleccione_naf">Seleccione NAF</string>
+    <string name="label_get">Gasto Estimado (GET)</string>
+    <string name="btn_atras">Atrás</string>
+    <string name="btn_siguiente">Siguiente</string>
+    <string name="title_diagnostico_final">Diagnóstico Final</string>
+    <string name="desc_diagnostico_final">Revisa el resumen de las métricas calculadas y añade las pautas iniciales antes de estructurar el plan nutricional.</string>
+    <string name="hint_pautas_notas">Pautas / Notas Clínicas</string>
+    <string name="hint_ejemplo_pautas">Ej. Aumentar el consumo de agua a 2.5L diarios. Priorizar el consumo de proteínas magras en el almuerzo...</string>
+    <string name="btn_finalizar_crear_dieta">Finalizar y Crear Dieta</string>
+
+
+    <string name="title_editar_seguridad">Seguridad y Contacto</string>
+    <string name="hint_nuevo_email">Correo Electrónico</string>
+    <string name="hint_nueva_clave">Nueva Contraseña</string>
+    <string name="hint_celular">Celular / WhatsApp</string>
+    <string name="title_editar_direccion">Dirección del Consultorio</string>
+    <string name="hint_direccion">Dirección Completa</string>
+    <string name="hint_referencia">Referencia (Opcional)</string>
+
+    <string name="buscar_paciente_hint">Buscar paciente por nombre...</string>
+    <string name="buscar_receta_hint">Buscar receta (Ej. crema volteada, almuerzos peruanos con pollo...)</string>
+    <string name="cd_icono_busqueda">Ícono de búsqueda</string>
+    <string name="cd_borrar_texto">Borrar texto de búsqueda</string>
+    <string name="sin_resultados">No se encontraron resultados.</string>
+
+    <string name="titulo_cnp_gestion">CNP Gestión</string>
+    <string name="subtitulo_pacientes_activos">Tus pacientes activos</string>
+    <string name="buscar_paciente_dni_hint">Buscar paciente por nombre o DNI...</string>
+    <string name="lbl_dni">DNI: %1$s</string>
+    <string name="lbl_ultima_consulta">Última Consulta</string>
+    <string name="estado_pendiente">Pendiente</string>
+
+    <!-- Accesibilidad -->
+    <string name="cd_fab_agregar_paciente">Agregar nuevo paciente</string>
+    <string name="cd_expandir_detalles">Expandir detalles del paciente</string>
+    <string name="titulo_pacientes_activos">Tus pacientes activos</string>
+    <string name="cd_volver_dashboard">Volver al inicio</string>
+
+    <!-- Cadenas del Dashboard -->
+    <string name="saludo_usuario">Hola, %1$s</string>
+    <string name="default_admin_email">admin@cnp.pe</string>
+    <string name="default_nutritionist_name">Nutricionista</string>
+    <string name="extra_patient_id">patient_id</string>
+
+    <!-- Descripciones de Accesibilidad (A11y) obligatorias para los XML -->
+    <string name="cd_perfil_usuario">Ver perfil del usuario</string>
+    <string name="cd_tarjeta_pacientes">Ver lista de pacientes activos</string>
+    <string name="cd_tarjeta_consultas">Ver historial de consultas del mes</string>
+
+    <!-- Flujo: Nueva Consulta -->
+    <string name="titulo_nueva_consulta">Nueva Consulta</string>
+    <string name="paso_indicador">PASO %1$d / 3</string>
+    <string name="paciente_info_format">ID: %1$s • %2$s años • %3$s</string>
+    <string name="cd_icono_generico">Icono de sección</string>
+
+    <!-- Paso 1: Antecedentes -->
+    <string name="motivo_consulta">Motivo de Consulta</string>
+    <string name="motivo_consulta_desc">Describa la razón principal de la visita de hoy.</string>
+    <string name="motivo_consulta_hint">Ej: Evaluación de dieta actual, seguimiento de pérdida de peso…</string>
+    <string name="antecedentes_familiares">Antecedentes Familiares</string>
+    <string name="antecedentes_familiares_desc">Seleccione condiciones relevantes en línea directa.</string>
+    <string name="ant_diabetes">Diabetes Tipo 2</string>
+    <string name="ant_hipertension">Hipertensión</string>
+    <string name="ant_obesidad">Obesidad</string>
+    <string name="ant_dislipidemia">Dislipidemia</string>
+    <string name="otros_antecedentes">OTROS ANTECEDENTES</string>
+    <string name="especificar_hint">Especificar…</string>
+    <string name="habitos_sueno">Hábitos de Sueño</string>
+    <string name="horas_promedio">HORAS PROMEDIO</string>
+    <string name="horas_hint">Ej: 7</string>
+    <string name="horas_sufijo">hrs</string>
+    <string name="calidad_sueno">CALIDAD</string>
+    <string name="seleccione_hint">Seleccione</string>
+    <string name="hidratacion_diaria">Hidratación Diaria</string>
+    <string name="consumo_agua_aprox">CONSUMO DE AGUA (APROX)</string>
+    <string name="litros_hint">Ej: 2.0</string>
+    <string name="litros_sufijo">Litros</string>
+    <string name="btn_guardar_borrador">Guardar Borrador</string>
+    <string name="btn_siguiente_paso">Siguiente Paso</string>
+
+    <!-- Paso 2: Medidas Antropométricas -->
+    <string name="consulta_en_curso">CONSULTA EN CURSO</string>
+    <string name="medidas_antropometricas">Medidas Antropométricas</string>
+    <string name="peso_kg">PESO (KG)</string>
+    <string name="estatura_cm">ESTATURA (CM)</string>
+    <string name="grasa_corporal_pct">GRASA CORPORAL (%)</string>
+    <string name="masa_muscular_pct">MASA MUSCULAR (%)</string>
+    <string name="imc_titulo">ÍNDICE DE MASA\nCORPORAL (IMC)</string>
+    <string name="tmb_titulo">TASA METABÓLICA\nBASAL (TMB)</string>
+    <string name="unidad_imc">kg/m²</string>
+    <string name="unidad_kcal">kcal</string>
+    <string name="unidad_kcal_dia">kcal/día</string>
+    <string name="formula_tmb">Mifflin-St Jeor</string>
+    <string name="gasto_energetico_total">Gasto Energético Total</string>
+    <string name="naf_titulo">NIVEL DE ACTIVIDAD FÍSICA (NAF)</string>
+    <string name="naf_hint">Ej: Ligero (1-3 días/sem)</string>
+    <string name="get_titulo">Gasto Estimado (GET)</string>
+    <string name="btn_diagnostico">Diagnóstico</string>
+
+    <!-- Paso 3: Diagnóstico Final -->
+    <string name="diagnostico_final">Diagnóstico Final</string>
+    <string name="diagnostico_final_desc">Revisa el resumen de las métricas calculadas y añade las pautas iniciales antes de estructurar el plan nutricional.</string>
+    <string name="resumen_clinico">Resumen Clínico</string>
+    <string name="imc_actual">IMC ACTUAL</string>
+    <string name="peso_ideal_est">PESO IDEAL (EST.)</string>
+    <string name="recomendaciones_generales">Recomendaciones Generales</string>
+    <string name="recomendaciones_desc">Estas indicaciones se incluirán en la primera página del reporte en PDF para el paciente.</string>
+    <string name="recomendaciones_hint">Ej. Aumentar el consumo de agua a 2.5L diarios. Priorizar el consumo de proteínas magras…</string>
+    <string name="btn_finalizar">Finalizar</string>
+    <string name="estado_sobrepeso">Sobrepeso</string>
+
+    <string name="titulo_generador_dieta">Plan Nutricional</string>
+    <string name="resumen_macros">Resumen de Macros</string>
+    <string name="kcal_totales">KCAL TOTALES</string>
+    <string name="proteinas_g">PROTEÍNAS</string>
+    <string name="carbos_g">CARBOS</string>
+    <string name="grasas_g">GRASAS</string>
+    <string name="comida_desayuno">Desayuno</string>
+    <string name="comida_almuerzo">Almuerzo</string>
+    <string name="comida_cena">Cena</string>
+    <string name="btn_agregar_alimento">+ Añadir Alimento</string>
+    <string name="btn_guardar_dieta">Guardar Plan Nutricional</string>
+    <string name="error_seleccionar_paciente">Por favor, seleccione un paciente primero.</string>
+    <string name="msg_plan_guardado">Plan nutricional guardado exitosamente.</string>
+    <string name="buscando_alimento_para">Buscar alimento para: %1$s</string>
+
 </resources>
+
