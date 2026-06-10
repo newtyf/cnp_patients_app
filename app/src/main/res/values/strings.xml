@@ -63,4 +63,14 @@
     <string name="pin_icon_desc">Icono de seguridad</string>
     <string name="pin_biometric_icon_desc">Icono de huella digital</string>
     <string name="pin_delete_desc">Borrar dígito</string>
+    <string name="pin_setup_success">PIN configurado correctamente</string>
+    <string name="pin_login_header">Bienvenido</string>
+    <string name="pin_login_subtitle">Ingresa tu PIN para acceder a tu cuenta</string>
+    <string name="pin_login_button">Ingresar</string>
+    <string name="pin_error_incorrecto">PIN incorrecto. Intenta de nuevo</string>
+
+    <!-- Register errors -->
+    <string name="error_campo_requerido">Este campo es requerido</string>
+    <string name="error_password_corta">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="error_passwords_no_coinciden">Las contraseñas no coinciden</string>
 </resources>

@@ -10,7 +10,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.newtyf.cnp_patients_app.R;
+import com.newtyf.cnp_patients_app.data.repository.NutritionistRepository;
 import com.newtyf.cnp_patients_app.presentation.auth.login.LoginActivity;
+import com.newtyf.cnp_patients_app.presentation.auth.pin.PinActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -25,8 +27,17 @@ public class SplashActivity extends AppCompatActivity {
             return insets;
         });
 
+        NutritionistRepository repository = new NutritionistRepository(this);
+
         findViewById(R.id.main).postDelayed(() -> {
-            startActivity(new Intent(this, LoginActivity.class));
+            Intent intent;
+            if (repository.hasRegistered()) {
+                intent = new Intent(this, PinActivity.class);
+                intent.putExtra(PinActivity.EXTRA_MODE, PinActivity.MODE_LOGIN);
+            } else {
+                intent = new Intent(this, LoginActivity.class);
+            }
+            startActivity(intent);
             finish();
         }, 2000);
     }

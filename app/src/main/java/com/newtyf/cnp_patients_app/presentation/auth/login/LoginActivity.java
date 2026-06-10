@@ -37,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void GoToPatientList(View view) {
-        Intent intent = new Intent(this, PinActivity.class);
-        startActivity(intent);
+        //        Intent intent = new Intent(this, PinActivity.class);
+        //        startActivity(intent);
     }
 
     public void GoToRegister(View view) {
