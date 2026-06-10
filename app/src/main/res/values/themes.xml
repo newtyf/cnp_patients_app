@@ -83,6 +83,32 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="ShapeAppearance.App.CircleImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="DetailRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingVertical">8dp</item>
+    </style>
+
+    <style name="DetailRowLabel" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="DetailRowValue" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:gravity">end</item>
+    </style>
+
     <style name="MyButtonOutlinedStyle" parent="Widget.Material3.Button.OutlinedButton">
         <item name="cornerRadius">8dp</item>
         <item name="strokeColor">?attr/colorPrimary</item>

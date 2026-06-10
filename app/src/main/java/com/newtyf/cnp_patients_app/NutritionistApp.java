@@ -15,8 +15,6 @@ import java.util.List;
  */
 public class NutritionistApp extends Application {
 
-    public static List<Patient> pacientes = new ArrayList<>();
-
     @Override
     public void onCreate() {
         super.onCreate();

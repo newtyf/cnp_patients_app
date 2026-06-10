@@ -13,7 +13,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "app_db";
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 3;
     private static DatabaseHelper instance = null;
 
     private DatabaseHelper(@Nullable Context context) {
@@ -55,7 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "  nutritionist_id  TEXT NOT NULL," +
             "  first_name       TEXT NOT NULL," +
             "  last_name        TEXT NOT NULL," +
-            "  id_number        TEXT UNIQUE," +
+            "  dni              TEXT UNIQUE," +
             "  birth_date       TEXT NOT NULL," +
             "  gender           TEXT," +
             "  phone            TEXT," +
@@ -135,7 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "  id           TEXT PRIMARY KEY," +
             "  diet_day_id  TEXT NOT NULL," +
             "  type         TEXT," +
-            "  \"order\"    INTEGER DEFAULT 0," +
+            "  meal_order    INTEGER DEFAULT 0," +
             "  FOREIGN KEY (diet_day_id) REFERENCES diet_day(id)" +
             ")"
         );

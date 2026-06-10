@@ -18,6 +18,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.newtyf.cnp_patients_app.NutritionistApp;
 import com.newtyf.cnp_patients_app.R;
 import com.newtyf.cnp_patients_app.data.model.Patient;
+import com.newtyf.cnp_patients_app.data.repository.PatientRepository;
+import com.newtyf.cnp_patients_app.data.session.SessionManager;
 import com.newtyf.cnp_patients_app.presentation.patients.create.PatientCreateFragment;
 import com.newtyf.cnp_patients_app.presentation.patients.detail.PatientDetailFragment;
 
@@ -26,6 +28,7 @@ import java.util.List;
 public class PacienteListFragment extends Fragment {
 
     private LinearLayout containerCards;
+    private PatientRepository repository;
 
     public static PacienteListFragment newInstance() {
         return new PacienteListFragment();
@@ -39,6 +42,8 @@ public class PacienteListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        repository = new PatientRepository(requireContext());
 
         containerCards = view.findViewById(R.id.containerCards);
 
@@ -64,7 +69,7 @@ public class PacienteListFragment extends Fragment {
     }
 
     private void loadCards() {
-        List<Patient> lista = NutritionistApp.pacientes;
+        List<Patient> lista = repository.getAll(SessionManager.getCurrentId());
 
         for (Patient p : lista) {
             View card = LayoutInflater.from(getContext()).inflate(R.layout.item_patient, containerCards, false);
@@ -75,14 +80,14 @@ public class PacienteListFragment extends Fragment {
             TextView tvLastConsult = card.findViewById(R.id.tvLastConsult);
             ImageButton btnMenuPatient = card.findViewById(R.id.btnMenuPatient);
 
-            tvName.setText(p.getName());
+            tvName.setText(p.getFirstName() + " " + p.getLastName());
             chipAge.setText(p.getAge() + " años");
             chipDni.setText("DNI: " + p.getDni());
             tvLastConsult.setText(p.getBirthDate());
 
             btnMenuPatient.setOnClickListener(v -> requireActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, PatientDetailFragment.newInstance(p.getDni()))
+                    .replace(R.id.fragment_container, PatientDetailFragment.newInstance(p.getId()))
                     .addToBackStack(null)
                     .commit());
 
