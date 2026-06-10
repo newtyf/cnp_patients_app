@@ -15,7 +15,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.newtyf.cnp_patients_app.R;
+import com.newtyf.cnp_patients_app.data.model.Nutritionist;
 import com.newtyf.cnp_patients_app.data.repository.NutritionistRepository;
+import com.newtyf.cnp_patients_app.data.session.SessionManager;
 import com.newtyf.cnp_patients_app.presentation.main.MainActivity;
 
 public class PinActivity extends AppCompatActivity {
@@ -84,16 +86,16 @@ public class PinActivity extends AppCompatActivity {
         btnConfirmarPin.setOnClickListener(v -> {
             if (mode == MODE_SETUP) {
                 repository.updatePin(nutritionistId, pinIngresado.toString());
+                Nutritionist n = repository.getFirst();
+                SessionManager.setCurrentNutritionist(n);
                 Toast.makeText(this, R.string.pin_setup_success, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                goToMain();
             } else {
                 boolean correcto = repository.checkPin(nutritionistId, pinIngresado.toString());
                 if (correcto) {
-                    Intent intent = new Intent(this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                    Nutritionist n = repository.getFirst();
+                    SessionManager.setCurrentNutritionist(n);
+                    goToMain();
                 } else {
                     Toast.makeText(this, R.string.pin_error_incorrecto, Toast.LENGTH_SHORT).show();
                     pinIngresado.setLength(0);
@@ -127,6 +129,12 @@ public class PinActivity extends AppCompatActivity {
                 actualizarIndicadores();
             }
         });
+    }
+
+    private void goToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void actualizarIndicadores() {
