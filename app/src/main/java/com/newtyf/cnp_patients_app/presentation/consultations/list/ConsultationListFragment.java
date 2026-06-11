@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,11 +13,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.chip.Chip;
+import com.google.android.material.color.MaterialColors;
 import com.newtyf.cnp_patients_app.R;
+import com.newtyf.cnp_patients_app.data.model.Consultation;
+import com.newtyf.cnp_patients_app.data.repository.ConsultationRepository;
+
+import java.util.List;
 
 public class ConsultationListFragment extends Fragment {
 
     private static final String ARG_PATIENT_ID = "patient_id";
+
+    private ConsultationRepository repository;
 
     public static ConsultationListFragment newInstance(String patientId) {
         ConsultationListFragment fragment = new ConsultationListFragment();
@@ -35,25 +43,49 @@ public class ConsultationListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        LinearLayout container = view.findViewById(R.id.containerConsultas);
-        cargarMock(container);
+        repository = new ConsultationRepository(requireContext());
+
+        String patientId = getArguments() != null ? getArguments().getString(ARG_PATIENT_ID) : null;
+        if (patientId == null) return;
+
+        List<Consultation> lista = repository.getByPatient(patientId);
+
+        View emptyState = view.findViewById(R.id.emptyState);
+        ScrollView scrollView = view.findViewById(R.id.scrollConsultas);
+
+        if (lista.isEmpty()) {
+            emptyState.setVisibility(View.VISIBLE);
+            scrollView.setVisibility(View.GONE);
+        } else {
+            LinearLayout container = view.findViewById(R.id.containerConsultas);
+            for (Consultation c : lista) {
+                renderItem(container, c);
+            }
+        }
     }
 
-    private void cargarMock(LinearLayout container) {
-        String[][] consultas = {
-            { "Evaluación Inicial",  "15 Octubre, 2023",   "100kg", "\"Paciente ingresa con IMC de 29.5. Refiere cansancio crónico. Se establecen metas iniciales.\"" },
-            { "Control Mensual",     "12 Noviembre, 2023",  "95kg",  "\"Reducción de 1.2kg. Mejora en los niveles de glucosa en ayunas. Paciente reporta mejor energía.\"" },
-            { "Ajuste de Dieta",     "20 Diciembre, 2023",  "90kg",  "\"Ajuste calórico para fiestas de fin de año. Se reemplazan colaciones por opciones más saludables.\"" },
-            { "Control Mensual",     "18 Enero, 2024",      "88kg",  "\"Paciente alcanzó meta de -12kg. Se ajusta plan para fase de mantenimiento.\"" },
-        };
+    private void renderItem(LinearLayout container, Consultation c) {
+        View item = LayoutInflater.from(getContext()).inflate(R.layout.item_consulta, container, false);
 
-        for (String[] c : consultas) {
-            View item = LayoutInflater.from(getContext()).inflate(R.layout.item_consulta, container, false);
-            ((TextView) item.findViewById(R.id.tvTipoNombre)).setText(c[0]);
-            ((TextView) item.findViewById(R.id.tvFecha)).setText(c[1]);
-            ((Chip)     item.findViewById(R.id.chipPeso)).setText(c[2]);
-            ((TextView) item.findViewById(R.id.tvNota)).setText(c[3]);
-            container.addView(item);
+        TextView tvRazon = item.findViewById(R.id.tvTipoNombre);
+        TextView tvFecha = item.findViewById(R.id.tvFecha);
+        TextView tvNota  = item.findViewById(R.id.tvNota);
+        Chip chipEstado  = item.findViewById(R.id.chipEstado);
+
+        tvRazon.setText(c.getReason() != null ? c.getReason() : getString(R.string.detail_patient_value_placeholder));
+        tvFecha.setText(c.getCreatedAt() != null ? c.getCreatedAt() : "—");
+        tvNota.setText(c.getNotes() != null ? c.getNotes() : "");
+        tvNota.setVisibility(c.getNotes() != null && !c.getNotes().isEmpty() ? View.VISIBLE : View.GONE);
+
+        boolean completado = c.getAnthropometricRecord() != null;
+        if (completado) {
+            chipEstado.setText(getString(R.string.consulta_estado_completado));
+            chipEstado.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(
+                    MaterialColors.getColor(chipEstado, com.google.android.material.R.attr.colorSecondaryContainer)));
+            chipEstado.setTextColor(
+                    MaterialColors.getColor(chipEstado, com.google.android.material.R.attr.colorOnSecondaryContainer));
         }
+
+        container.addView(item);
     }
 }

@@ -105,4 +105,8 @@
 
     <!-- Consultation list -->
     <string name="consultation_list_title">Historial de Consultas</string>
+    <string name="consulta_estado_pendiente">Pendiente</string>
+    <string name="consulta_estado_completado">Completado</string>
+    <string name="consulta_empty_title">Sin consultas registradas</string>
+    <string name="consulta_empty_subtitle">Las consultas de este paciente\naparecerán aquí</string>
 </resources>

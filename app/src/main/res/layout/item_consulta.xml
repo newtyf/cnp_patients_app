@@ -66,16 +66,17 @@
 
             </LinearLayout>
 
-            <!-- Chip peso -->
+            <!-- Estado de la consulta -->
             <com.google.android.material.chip.Chip
-                android:id="@+id/chipPeso"
+                android:id="@+id/chipEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100kg"
+                android:text="@string/consulta_estado_pendiente"
                 android:textAppearance="?attr/textAppearanceLabelSmall"
                 app:chipBackgroundColor="?attr/colorSurfaceContainerHigh"
                 app:chipMinTouchTargetSize="0dp"
-                android:textColor="?attr/colorOnSurfaceVariant" />
+                android:textColor="?attr/colorOnSurfaceVariant"
+                app:chipStrokeWidth="0dp" />
 
         </LinearLayout>
 
