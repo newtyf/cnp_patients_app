@@ -99,4 +99,7 @@
     <string name="error_campo_requerido">Este campo es requerido</string>
     <string name="error_password_corta">La contraseña debe tener al menos 8 caracteres</string>
     <string name="error_passwords_no_coinciden">Las contraseñas no coinciden</string>
+
+    <!-- Common UI -->
+    <string name="tab_placeholder_text">Próximamente</string>
 </resources>
