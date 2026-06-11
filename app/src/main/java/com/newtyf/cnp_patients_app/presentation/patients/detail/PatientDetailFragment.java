@@ -16,6 +16,7 @@ import com.newtyf.cnp_patients_app.R;
 import com.newtyf.cnp_patients_app.common.ui.TabPlaceholderFragment;
 import com.newtyf.cnp_patients_app.data.model.Patient;
 import com.newtyf.cnp_patients_app.data.repository.PatientRepository;
+import com.newtyf.cnp_patients_app.presentation.consultations.list.ConsultationListFragment;
 import com.newtyf.cnp_patients_app.presentation.patients.detail.tabs.PatientInfoFragment;
 import com.newtyf.cnp_patients_app.presentation.patients.edit.PatientEditFragment;
 
@@ -90,6 +91,7 @@ public class PatientDetailFragment extends Fragment {
         Fragment fragment;
         switch (position) {
             case 0:  fragment = PatientInfoFragment.newInstance(patientId); break;
+            case 1:  fragment = ConsultationListFragment.newInstance(patientId); break;
             default: fragment = TabPlaceholderFragment.newInstance(); break;
         }
 

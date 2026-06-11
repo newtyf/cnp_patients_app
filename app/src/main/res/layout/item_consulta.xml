@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    style="?attr/materialCardViewOutlinedStyle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Fila superior: ícono + título + peso -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Ícono tipo consulta -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="12dp"
+                app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                app:cardCornerRadius="10dp"
+                app:strokeWidth="0dp">
+
+                <ImageView
+                    android:id="@+id/ivTipoConsulta"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="?attr/colorOnSecondaryContainer"
+                    android:contentDescription="@null" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Título y fecha -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTipoNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Evaluación Inicial"
+                    android:textStyle="bold"
+                    android:textAppearance="?attr/textAppearanceTitleSmall"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/tvFecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15 Octubre, 2023"
+                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+            </LinearLayout>
+
+            <!-- Chip peso -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPeso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100kg"
+                android:textAppearance="?attr/textAppearanceLabelSmall"
+                app:chipBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:chipMinTouchTargetSize="0dp"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Nota -->
+        <TextView
+            android:id="@+id/tvNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paciente ingresa con IMC de 29.5. Refiere cansancio crónico. Se establecen metas iniciales."
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textStyle="italic"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

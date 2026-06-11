@@ -102,4 +102,7 @@
 
     <!-- Common UI -->
     <string name="tab_placeholder_text">Próximamente</string>
+
+    <!-- Consultation list -->
+    <string name="consultation_list_title">Historial de Consultas</string>
 </resources>
