@@ -1,6 +1,8 @@
 package com.newtyf.cnp_patients_app.presentation.patients.list;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +17,7 @@ import android.widget.TextView;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.newtyf.cnp_patients_app.NutritionistApp;
+import com.google.android.material.textfield.TextInputEditText;
 import com.newtyf.cnp_patients_app.R;
 import com.newtyf.cnp_patients_app.data.model.Patient;
 import com.newtyf.cnp_patients_app.data.repository.PatientRepository;
@@ -50,8 +52,21 @@ public class PacienteListFragment extends Fragment {
         ImageButton btnPerfil = view.findViewById(R.id.btnPerfil);
         // TODO: navegar a perfil de nutricionista
 
-        // TODO: filtrar lista al escribir
-        // view.findViewById(R.id.etBuscar)
+        TextInputEditText etBuscar = view.findViewById(R.id.etBuscar);
+        etBuscar.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                containerCards.removeAllViews();
+                String query = s.toString().trim();
+                List<Patient> lista = query.isEmpty()
+                        ? repository.getAll(SessionManager.getCurrentId())
+                        : repository.search(SessionManager.getCurrentId(), query);
+                renderCards(lista);
+            }
+        });
 
         FloatingActionButton fab = view.findViewById(R.id.fabCreatePatient);
         fab.setOnClickListener(v -> requireActivity().getSupportFragmentManager()
@@ -69,8 +84,10 @@ public class PacienteListFragment extends Fragment {
     }
 
     private void loadCards() {
-        List<Patient> lista = repository.getAll(SessionManager.getCurrentId());
+        renderCards(repository.getAll(SessionManager.getCurrentId()));
+    }
 
+    private void renderCards(List<Patient> lista) {
         for (Patient p : lista) {
             View card = LayoutInflater.from(getContext()).inflate(R.layout.item_patient, containerCards, false);
 

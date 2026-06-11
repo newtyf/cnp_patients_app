@@ -61,38 +61,49 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Lista de pacientes -->
-    <ScrollView
-        android:id="@+id/scrollCards"
-        android:layout_width="0dp"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintTop_toBottomOf="@id/searchBar"
-        app:layout_constraintBottom_toTopOf="@id/fabCreatePatient"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
-            android:id="@+id/containerCards"
+        <!-- Lista de pacientes -->
+        <ScrollView
+            android:id="@+id/scrollCards"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintTop_toBottomOf="@id/searchBar"
+            app:layout_constraintBottom_toTopOf="@id/fabCreatePatient"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:id="@+id/containerCards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </ScrollView>
+
+        <!-- FAB agregar paciente -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabCreatePatient"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="48dp"
+            app:srcCompat="@drawable/ic_add"
+            app:materialThemeOverlay="@style/ThemeOverlay.Material3.FloatingActionButton.Surface"
+            app:fabSize="normal"
+            android:layout_gravity="end|bottom" />
 
-    </ScrollView>
 
-    <!-- FAB agregar paciente -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabCreatePatient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="48dp"
-        app:srcCompat="@drawable/ic_add"
-        app:materialThemeOverlay="@style/ThemeOverlay.Material3.FloatingActionButton.Surface"
-        app:fabSize="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
