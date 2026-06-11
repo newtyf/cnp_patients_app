@@ -1,5 +1,6 @@
 package com.newtyf.cnp_patients_app.presentation.patients.list;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,6 +23,7 @@ import com.newtyf.cnp_patients_app.R;
 import com.newtyf.cnp_patients_app.data.model.Patient;
 import com.newtyf.cnp_patients_app.data.repository.PatientRepository;
 import com.newtyf.cnp_patients_app.data.session.SessionManager;
+import com.newtyf.cnp_patients_app.presentation.consultations.register.ConsultationRegisterActivity;
 import com.newtyf.cnp_patients_app.presentation.patients.create.PatientCreateFragment;
 import com.newtyf.cnp_patients_app.presentation.patients.detail.PatientDetailFragment;
 
@@ -107,6 +109,12 @@ public class PacienteListFragment extends Fragment {
                     .replace(R.id.fragment_container, PatientDetailFragment.newInstance(p.getId()))
                     .addToBackStack(null)
                     .commit());
+
+            card.findViewById(R.id.btnNuevaConsulta).setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), ConsultationRegisterActivity.class);
+                intent.putExtra(ConsultationRegisterActivity.EXTRA_PATIENT_ID, p.getId());
+                startActivity(intent);
+            });
 
             containerCards.addView(card);
         }

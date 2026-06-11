@@ -103,6 +103,20 @@
     <!-- Common UI -->
     <string name="tab_placeholder_text">Próximamente</string>
 
+    <!-- Consultation register -->
+    <string name="consulta_register_title">Nueva Consulta</string>
+    <string name="consulta_register_paso_1">PASO 1 / 3</string>
+    <string name="consulta_register_cancelar">Cancelar</string>
+    <string name="consulta_register_siguiente">Siguiente paso</string>
+    <string name="consulta_register_tipo_label">Tipo de Consulta</string>
+    <string name="consulta_register_tipo_hint">Selecciona un tipo</string>
+    <string name="consulta_register_motivo_label">Motivo de Consulta</string>
+    <string name="consulta_register_motivo_desc">Describe la razón principal de la visita de hoy.</string>
+    <string name="consulta_register_motivo_hint">Ej: Evaluación de dieta actual, seguimiento de pérdida de peso…</string>
+    <string name="consulta_register_notas_label">Notas</string>
+    <string name="consulta_register_notas_desc">Observaciones adicionales de la consulta.</string>
+    <string name="consulta_register_notas_hint">Ej: Paciente refiere cansancio, se ajusta plan…</string>
+
     <!-- Consultation list -->
     <string name="consultation_list_title">Historial de Consultas</string>
     <string name="consulta_estado_pendiente">Pendiente</string>

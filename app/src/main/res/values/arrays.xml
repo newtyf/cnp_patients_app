@@ -10,4 +10,13 @@
         <item>Obesidad y sobrepeso</item>
         <item>Trastornos de la conducta alimentaria</item>
     </string-array>
+
+    <string-array name="tipos_consulta">
+        <item>Evaluación inicial</item>
+        <item>Control mensual</item>
+        <item>Ajuste de dieta</item>
+        <item>Consulta de urgencia</item>
+        <item>Seguimiento</item>
+        <item>Alta nutricional</item>
+    </string-array>
 </resources>
