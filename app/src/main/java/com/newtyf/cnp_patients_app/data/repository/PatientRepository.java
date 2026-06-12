@@ -82,6 +82,14 @@ public class PatientRepository {
         return lista;
     }
 
+    public int count(String nutritionistId) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT COUNT(*) FROM patient WHERE nutritionist_id = ?", new String[]{nutritionistId});
+        int total = c.moveToFirst() ? c.getInt(0) : 0;
+        c.close();
+        return total;
+    }
+
     private ContentValues toValues(Patient p) {
         ContentValues cv = new ContentValues();
         cv.put("id", p.getId());

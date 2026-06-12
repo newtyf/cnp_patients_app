@@ -73,7 +73,7 @@ public class ConsultationListFragment extends Fragment {
         Chip chipEstado  = item.findViewById(R.id.chipEstado);
 
         tvRazon.setText(c.getReason() != null ? c.getReason() : getString(R.string.detail_patient_value_placeholder));
-        tvFecha.setText(c.getCreatedAt() != null ? c.getCreatedAt() : "—");
+        tvFecha.setText(c.getDate() != null ? c.getDate() : "—");
         tvNota.setText(c.getNotes() != null ? c.getNotes() : "");
         tvNota.setVisibility(c.getNotes() != null && !c.getNotes().isEmpty() ? View.VISIBLE : View.GONE);
 

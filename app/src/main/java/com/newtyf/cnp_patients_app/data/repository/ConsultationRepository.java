@@ -40,7 +40,7 @@ public class ConsultationRepository {
             "FROM consultation c " +
             "LEFT JOIN anthropometric_record ar ON ar.consultation_id = c.id " +
             "WHERE c.patient_id = ? " +
-            "ORDER BY c.date DESC";
+            "ORDER BY c.created_at DESC";
 
         Cursor cursor = db.rawQuery(sql, new String[]{patientId});
         while (cursor.moveToNext()) {
@@ -76,6 +76,42 @@ public class ConsultationRepository {
         }
         cursor.close();
         return consultation;
+    }
+
+    public int countThisMonth(String nutritionistId) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String month = java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM"));
+        Cursor c = db.rawQuery(
+            "SELECT COUNT(*) FROM consultation c " +
+            "JOIN patient p ON p.id = c.patient_id " +
+            "WHERE p.nutritionist_id = ? AND c.date LIKE ?",
+            new String[]{nutritionistId, month + "%"});
+        int total = c.moveToFirst() ? c.getInt(0) : 0;
+        c.close();
+        return total;
+    }
+
+    public List<Consultation> getRecent(String nutritionistId, int limit) {
+        List<Consultation> lista = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql =
+            "SELECT c.* FROM consultation c " +
+            "JOIN patient p ON p.id = c.patient_id " +
+            "WHERE p.nutritionist_id = ? " +
+            "ORDER BY c.created_at DESC LIMIT ?";
+        Cursor cursor = db.rawQuery(sql, new String[]{nutritionistId, String.valueOf(limit)});
+        while (cursor.moveToNext()) {
+            Consultation consultation = new Consultation();
+            consultation.setId(cursor.getString(cursor.getColumnIndexOrThrow("id")));
+            consultation.setPatientId(cursor.getString(cursor.getColumnIndexOrThrow("patient_id")));
+            consultation.setDate(cursor.getString(cursor.getColumnIndexOrThrow("date")));
+            consultation.setType(cursor.getString(cursor.getColumnIndexOrThrow("type")));
+            consultation.setReason(cursor.getString(cursor.getColumnIndexOrThrow("reason")));
+            consultation.setNotes(cursor.getString(cursor.getColumnIndexOrThrow("notes")));
+            lista.add(consultation);
+        }
+        cursor.close();
+        return lista;
     }
 
     public Consultation insert(Consultation consultation) {
