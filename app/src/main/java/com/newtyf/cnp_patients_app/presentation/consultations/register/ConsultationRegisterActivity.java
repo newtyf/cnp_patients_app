@@ -23,7 +23,9 @@ public class ConsultationRegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_consultation_register);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            Insets ime = insets.getInsets(WindowInsetsCompat.Type.ime());
+            int bottom = Math.max(systemBars.bottom, ime.bottom);
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, bottom);
             return insets;
         });
 
@@ -39,8 +41,17 @@ public class ConsultationRegisterActivity extends AppCompatActivity {
         }
     }
 
-    public void updateProgress(int step, int total) {
-        ((TextView) findViewById(R.id.tvPaso)).setText("PASO " + step + " / " + total);
+    public void goToStep2(String patientId, String consultationId) {
+        updateProgress(2);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.stepContainer, ConsultationStep2Fragment.newInstance(patientId, consultationId))
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void updateProgress(int step) {
+        ((TextView) findViewById(R.id.tvPaso)).setText("PASO " + step + " / 3");
         ((com.google.android.material.progressindicator.LinearProgressIndicator)
                 findViewById(R.id.progressPasos)).setProgress(step);
     }

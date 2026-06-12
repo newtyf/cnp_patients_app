@@ -21,7 +21,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static List<Patient> pacientes = new ArrayList<>();
     NavigationBarView navigation;
 
     @Override

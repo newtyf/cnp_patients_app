@@ -51,22 +51,13 @@ public class PatientInfoFragment extends Fragment {
         } catch (Exception e) {
             tvEdad.setText(getString(R.string.detail_patient_value_placeholder));
         }
-        tvSexo.setText(formatGenero(patient.getGender()));
+        String genderLabel = patient.getGenderLabel();
+        tvSexo.setText(genderLabel != null ? genderLabel : getString(R.string.detail_patient_value_placeholder));
         tvTel.setText(orPlaceholder(patient.getPhone()));
         tvCorreo.setText(orPlaceholder(patient.getEmail()));
     }
 
-    private String formatGenero(String gender) {
-        if (gender == null) return getString(R.string.detail_patient_value_placeholder);
-        switch (gender) {
-            case "M": return getString(R.string.create_patient_genero_m);
-            case "F": return getString(R.string.create_patient_genero_f);
-            case "O": return getString(R.string.create_patient_genero_o);
-            default:  return getString(R.string.detail_patient_value_placeholder);
-        }
-    }
-
-    private String orPlaceholder(String value) {
+private String orPlaceholder(String value) {
         return (value != null && !value.isEmpty()) ? value : getString(R.string.detail_patient_value_placeholder);
     }
 }

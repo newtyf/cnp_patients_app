@@ -41,6 +41,16 @@ public class Patient {
         return firstName + " " + lastName;
     }
 
+    public String getGenderLabel() {
+        if (gender == null) return null;
+        switch (gender) {
+            case "M": return "Varón";
+            case "F": return "Mujer";
+            case "O": return "Otro";
+            default:  return null;
+        }
+    }
+
     public int getAge() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate date = LocalDate.parse(this.birthDate, format);

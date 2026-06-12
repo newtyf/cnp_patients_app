@@ -11,6 +11,20 @@
         <item>Trastornos de la conducta alimentaria</item>
     </string-array>
 
+    <string-array name="bmr_formulas">
+        <item>Mifflin-St Jeor</item>
+        <item>Harris-Benedict</item>
+        <item>Katch-McArdle</item>
+    </string-array>
+
+    <string-array name="niveles_actividad">
+        <item>Sedentario (sin ejercicio)</item>
+        <item>Ligero (Ejercicio ligero 1-3 días/sem)</item>
+        <item>Moderado (Ejercicio moderado 3-5 días/sem)</item>
+        <item>Activo (Ejercicio intenso 6-7 días/sem)</item>
+        <item>Muy activo (Ejercicio muy intenso, trabajo físico)</item>
+    </string-array>
+
     <string-array name="tipos_consulta">
         <item>Evaluación inicial</item>
         <item>Control mensual</item>

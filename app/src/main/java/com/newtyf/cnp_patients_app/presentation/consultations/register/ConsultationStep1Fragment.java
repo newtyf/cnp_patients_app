@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.newtyf.cnp_patients_app.R;
 import com.newtyf.cnp_patients_app.data.model.Consultation;
 import com.newtyf.cnp_patients_app.data.model.Patient;
@@ -58,27 +58,32 @@ public class ConsultationStep1Fragment extends Fragment {
             AutoCompleteTextView spinnerTipo = view.findViewById(R.id.spinnerTipo);
             TextInputEditText etMotivo = view.findViewById(R.id.etMotivo);
             TextInputEditText etNotas  = view.findViewById(R.id.etNotas);
+            TextInputLayout tilTipo    = view.findViewById(R.id.tilTipo);
+            TextInputLayout tilMotivo  = view.findViewById(R.id.tilMotivo);
+            TextInputLayout tilNotas   = view.findViewById(R.id.tilNotas);
 
             String tipo   = spinnerTipo.getText().toString().trim();
             String motivo = etMotivo.getText() != null ? etMotivo.getText().toString().trim() : "";
+            String notas  = etNotas.getText() != null ? etNotas.getText().toString().trim() : "";
 
-            if (motivo.isEmpty()) {
-                etMotivo.setError(getString(R.string.error_campo_requerido));
-                return;
-            }
+            boolean valido = true;
+
+            if (tipo.isEmpty())   { tilTipo.setError(getString(R.string.error_campo_requerido));   valido = false; } else { tilTipo.setError(null); }
+            if (motivo.isEmpty()) { tilMotivo.setError(getString(R.string.error_campo_requerido)); valido = false; } else { tilMotivo.setError(null); }
+            if (notas.isEmpty())  { tilNotas.setError(getString(R.string.error_campo_requerido));  valido = false; } else { tilNotas.setError(null); }
+
+            if (!valido) return;
 
             Consultation consulta = new Consultation();
             consulta.setPatientId(patientId);
-            consulta.setType(tipo.isEmpty() ? null : tipo);
+            consulta.setType(tipo);
             consulta.setReason(motivo);
-            consulta.setNotes(etNotas.getText() != null ? etNotas.getText().toString().trim() : null);
+            consulta.setNotes(notas);
             consulta.setDate(java.time.LocalDate.now().toString());
 
             consultationRepository.insert(consulta);
 
-            // TODO: navegar al paso 2 pasando consulta.getId()
-            Toast.makeText(getContext(), "Consulta creada", Toast.LENGTH_SHORT).show();
-            requireActivity().finish();
+            ((ConsultationRegisterActivity) requireActivity()).goToStep2(patientId, consulta.getId());
         });
     }
 
@@ -91,13 +96,7 @@ public class ConsultationStep1Fragment extends Fragment {
 
         String info = "ID: " + (patient.getDni() != null ? patient.getDni() : "—");
         try { info += " • " + patient.getAge() + " años"; } catch (Exception ignored) {}
-        if (patient.getGender() != null) {
-            switch (patient.getGender()) {
-                case "M": info += " • Varón"; break;
-                case "F": info += " • Mujer"; break;
-                case "O": info += " • Otro"; break;
-            }
-        }
+        if (patient.getGenderLabel() != null) info += " • " + patient.getGenderLabel();
         ((TextView) view.findViewById(R.id.tvInfoPaciente)).setText(info);
     }
 

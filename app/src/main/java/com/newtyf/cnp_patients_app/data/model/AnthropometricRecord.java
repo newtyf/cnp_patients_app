@@ -2,6 +2,8 @@ package com.newtyf.cnp_patients_app.data.model;
 
 public class AnthropometricRecord {
 
+    public static final double[] NAF_FACTORES = { 1.2, 1.375, 1.55, 1.725, 1.9 };
+
     private String id;
     private String consultationId;
     private Double weightKg;
@@ -48,4 +50,35 @@ public class AnthropometricRecord {
 
     public String getBmrFormula() { return bmrFormula; }
     public void setBmrFormula(String bmrFormula) { this.bmrFormula = bmrFormula; }
+
+    public static double calcularBmi(double weightKg, double heightCm) {
+        double alturaM = heightCm / 100.0;
+        return weightKg / (alturaM * alturaM);
+    }
+
+    public static String categoriaImc(double bmi) {
+        if (bmi < 18.5) return "Bajo peso";
+        if (bmi < 25.0) return "Normal";
+        if (bmi < 30.0) return "Sobrepeso";
+        if (bmi < 35.0) return "Obesidad I";
+        if (bmi < 40.0) return "Obesidad II";
+        return "Obesidad III";
+    }
+
+    public static Double calcularBmr(String formula, double weightKg, double heightCm, Double bodyFatPct) {
+        switch (formula) {
+            case "Harris-Benedict":
+                return 88.362 + (13.397 * weightKg) + (4.799 * heightCm) - (5.677 * 30);
+            case "Katch-McArdle":
+                if (bodyFatPct == null) return null;
+                double masaMagra = weightKg * (1 - bodyFatPct / 100.0);
+                return 370 + (21.6 * masaMagra);
+            default: // Mifflin-St Jeor
+                return (10 * weightKg) + (6.25 * heightCm) - (5 * 30) + 5;
+        }
+    }
+
+    public static double calcularTdee(double bmrKcal, double activityFactor) {
+        return bmrKcal * activityFactor;
+    }
 }
