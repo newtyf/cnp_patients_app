@@ -81,8 +81,10 @@ public class ConsultationStep2Fragment extends Fragment {
         setupSpinners();
         setupWatchers();
 
-        view.findViewById(R.id.btnDiagnostico).setOnClickListener(v ->
-                guardarYContinuar(consultationId));
+        view.findViewById(R.id.btnDiagnostico).setOnClickListener(v -> {
+            boolean result = save(consultationId);
+            if (result) ((ConsultationRegisterActivity) requireActivity()).goToStep3(patientId, consultationId);
+        });
     }
 
     private void cargarPaciente(View view, String patientId) {
@@ -161,7 +163,7 @@ public class ConsultationStep2Fragment extends Fragment {
         return -1;
     }
 
-    private void guardarYContinuar(String consultationId) {
+    private boolean save(String consultationId) {
         Double peso     = parseDouble(etPeso);
         Double estatura = parseDouble(etEstatura);
         Double grasa    = parseDouble(etGrasa);
@@ -177,7 +179,7 @@ public class ConsultationStep2Fragment extends Fragment {
         if (katch && grasa == null) { tilGrasa.setError(getString(R.string.error_campo_requerido));    valido = false; } else { tilGrasa.setError(null); }
         if (nafPos == -1)           { tilNaf.setError(getString(R.string.error_campo_requerido));      valido = false; } else { tilNaf.setError(null); }
 
-        if (!valido) return;
+        if (!valido) return valido;
 
         AnthropometricRecord record = new AnthropometricRecord();
         record.setConsultationId(consultationId);
@@ -196,9 +198,7 @@ public class ConsultationStep2Fragment extends Fragment {
         record.setTdeeKcal(AnthropometricRecord.calcularTdee(tmb, nafFactor));
 
         anthropometricRepository.insert(record);
-
-        // TODO: navegar al paso 3
-        requireActivity().finish();
+        return valido;
     }
 
     private TextWatcher clearAndRecalculate(com.google.android.material.textfield.TextInputLayout til) {

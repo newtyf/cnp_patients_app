@@ -51,7 +51,17 @@ public class AnthropometricRecord {
     public String getBmrFormula() { return bmrFormula; }
     public void setBmrFormula(String bmrFormula) { this.bmrFormula = bmrFormula; }
 
-    public static double calcularBmi(double weightKg, double heightCm) {
+    private double calcularIdealWeight(double weightKg, double currentFatPct, double targetFatPct) {
+        double leanMass = weightKg * (1 - (currentFatPct / 100));
+
+        return leanMass / (1 - (targetFatPct / 100));
+    }
+
+    public Double calcularIdealWeight() {
+        return calcularIdealWeight(weightKg, bodyFatPct, 15.0);
+    }
+
+    public static Double calcularBmi(Double weightKg, Double heightCm) {
         double alturaM = heightCm / 100.0;
         return weightKg / (alturaM * alturaM);
     }

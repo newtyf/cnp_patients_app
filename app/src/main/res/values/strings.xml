@@ -119,19 +119,25 @@
     <string name="consulta_register_notas_hint">Ej: Paciente refiere cansancio, se ajusta plan…</string>
     <string name="consulta_register_regresar">Regresar</string>
     <string name="consulta_register_results">Resultados</string>
+    <string name="consulta_register_finish">Ir a dietas</string>
     <string name="step2_medidas_title">Medidas Antropométricas</string>
     <string name="step2_peso_label">PESO (KG)</string>
     <string name="step2_estatura_label">ESTATURA (CM)</string>
     <string name="step2_grasa_label">GRASA CORPORAL (%)</string>
     <string name="step2_musculo_label">MASA MUSCULAR (%)</string>
     <string name="step2_imc_title">Índice de Masa Corporal (IMC)</string>
+    <string name="step2_current_imc_title">IMC Actual</string>
     <string name="step2_tmb_title">Tasa Metabólica Basal (TMB)</string>
+    <string name="step2_ideal_weight_title">Peso Ideal (EST.)</string>
     <string name="step2_formula_label">FÓRMULA DE CÁLCULO</string>
     <string name="step2_get_title">Gasto Energético Total</string>
     <string name="step2_naf_label">NIVEL DE ACTIVIDAD FÍSICA (NAF)</string>
     <string name="step2_get_label">Gasto Estimado (GET)</string>
     <string name="step2_kcal_dia">kcal/día</string>
     <string name="step2_kg_m2">kg/m²</string>
+    <string name="step3_title">Diagnóstico Final</string>
+    <string name="step3_description">Revisa el resumen de las métricas calculadas y añade las pautas iniciales antes de estructurar el plan nutricional.</string>
+
 
     <!-- Consultation list -->
     <string name="consultation_list_title">Historial de Consultas</string>

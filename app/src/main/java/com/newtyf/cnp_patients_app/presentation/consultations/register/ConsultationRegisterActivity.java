@@ -46,7 +46,14 @@ public class ConsultationRegisterActivity extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.stepContainer, ConsultationStep2Fragment.newInstance(patientId, consultationId))
-                .addToBackStack(null)
+                .commit();
+    }
+
+    public void goToStep3(String patientId, String consultationId) {
+        updateProgress(3);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.stepContainer, ConsultationStep3Fragment.newInstance(patientId, consultationId))
                 .commit();
     }
 
